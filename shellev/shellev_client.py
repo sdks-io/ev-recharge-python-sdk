@@ -40,7 +40,8 @@ class ShellevClient(object):
                  override_http_client_configuration=False, http_call_back=None,
                  timeout=60, max_retries=0, backoff_factor=2,
                  retry_statuses=None, retry_methods=None,
-                 environment=Environment.PRODUCTION,
+                 environment=Environment.PRODUCTION, o_auth_client_id=None,
+                 o_auth_client_secret=None, o_auth_token=None,
                  client_credentials_auth_credentials=None, config=None):
         self.config = config or Configuration(
             http_client_instance=http_client_instance,
@@ -48,7 +49,9 @@ class ShellevClient(object):
             http_call_back=http_call_back, timeout=timeout,
             max_retries=max_retries, backoff_factor=backoff_factor,
             retry_statuses=retry_statuses, retry_methods=retry_methods,
-            environment=environment,
+            environment=environment, o_auth_client_id=o_auth_client_id,
+            o_auth_client_secret=o_auth_client_secret,
+            o_auth_token=o_auth_token,
             client_credentials_auth_credentials=client_credentials_auth_credentials)
 
         self.global_configuration = GlobalConfiguration(self.config)\

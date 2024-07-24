@@ -4,7 +4,7 @@ requires = ["setuptools>=61.0"]
 [project]
 name = "ev-recharge-sdk"
 description = "This API Product provides the option to manage charging at all public Shell Recharge locations. The end points provides control to start, stop and get status of the charging session."
-version = "1.1.0"
+version = "1.2.0"
 readme = "README.md"
 requires-python = ">=3.7"
 keywords = ["EV", "Charging", "Shell", "APIMatic", "SDK", "APIs", "Recharge", "locations"]
