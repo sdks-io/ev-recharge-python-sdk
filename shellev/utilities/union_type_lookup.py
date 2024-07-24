@@ -21,7 +21,7 @@ class UnionTypeLookUp:
 
     """
     _templates = {
-        'MarkersResponse': OneOf(
+        'LocationMarker': OneOf(
             [
                 LeafType(SingleLocationMarker,
                          Context.create(
@@ -35,7 +35,8 @@ class UnionTypeLookUp:
                          ))
             ],
             Context.create(
-               is_array=True
+               is_array=True,
+               is_optional=True
             )
         )
     }

@@ -30,7 +30,7 @@ class ConnectorVO(object):
             attached. False by default (not sent in this case)
         tariff (TariffVO): Tariff details for charging on this Connector
         updated (str): ISO8601-compliant UTC datetime of the last update of
-            the Connectors's data
+            the Connector’s data
         updated_by (ConnectorVOUpdatedByEnum): Source of the last update
         deleted (str): optional  ISO8601-compliant UTC deletion timestamp of
             the connector

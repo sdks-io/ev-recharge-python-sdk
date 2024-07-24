@@ -17,9 +17,9 @@ class GetChargeSessionRetrieveResponse200Json(object):
     TODO: type model description here.
 
     Attributes:
-        request_id (uuid|str): A unique request id in GUID format. The value
-            is written to the Shell API Platform audit log for end to end
-            traceability of a request.
+        request_id (uuid|str): Mandatory UUID (according to RFC 4122
+            standards) for requests and responses. This will be played back in
+            the response from the request.
         status (GetChargeSessionRetrieveResponse200JsonStatusEnum): Indicates
             overall status of the request
         data (List[DataRetrieve]): TODO: type description here.
@@ -28,9 +28,9 @@ class GetChargeSessionRetrieveResponse200Json(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "request_id": 'RequestId',
-        "status": 'Status',
-        "data": 'Data'
+        "request_id": 'requestId',
+        "status": 'status',
+        "data": 'data'
     }
 
     _optionals = [
@@ -68,11 +68,11 @@ class GetChargeSessionRetrieveResponse200Json(object):
             return None
 
         # Extract variables from the dictionary
-        request_id = dictionary.get("RequestId") if dictionary.get("RequestId") else None
-        status = dictionary.get("Status") if dictionary.get("Status") else None
+        request_id = dictionary.get("requestId") if dictionary.get("requestId") else None
+        status = dictionary.get("status") if dictionary.get("status") else None
         data = None
-        if dictionary.get('Data') is not None:
-            data = [DataRetrieve.from_dictionary(x) for x in dictionary.get('Data')]
+        if dictionary.get('data') is not None:
+            data = [DataRetrieve.from_dictionary(x) for x in dictionary.get('data')]
         else:
             data = APIHelper.SKIP
         # Return an object of this model

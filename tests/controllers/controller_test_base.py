@@ -29,13 +29,6 @@ class ControllerTestBase(unittest.TestCase):
         cls.config = ControllerTestBase.create_configuration()
         cls.client = ShellevClient(config=cls.config)
 
-        bearer_auth_token = cls.client.bearer_auth.fetch_token()
-        client_credentials_auth_credentials = cls.config.client_credentials_auth_credentials\
-            .clone_with(o_auth_token=bearer_auth_token)
-        cls.config = cls.config.clone_with(client_credentials_auth_credentials=client_credentials_auth_credentials)
-
-        cls.client = ShellevClient(config=cls.config)
-
     @staticmethod
     def create_configuration():
         return Configuration(http_call_back=HttpResponseCatcher())

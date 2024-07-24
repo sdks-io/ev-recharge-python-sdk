@@ -15,17 +15,15 @@ class ChargesessionStartBody(object):
     TODO: type model description here.
 
     Attributes:
-        ev_charge_number (str): The EV Charge Number which can be found on the
-            back of the Shell EV Card
-        evse_id (str): Standard EVSE (Electric Vehicle Supply Equipment) Id
-            identifier (ISO-IEC-15118)
+        ev_charge_number (str): Ev charge number
+        evse_id (str): This is the Electric Vehicle EquipmentID
 
     """
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "ev_charge_number": 'EvChargeNumber',
-        "evse_id": 'EvseId'
+        "ev_charge_number": 'evChargeNumber',
+        "evse_id": 'evseId'
     }
 
     def __init__(self,
@@ -56,8 +54,8 @@ class ChargesessionStartBody(object):
             return None
 
         # Extract variables from the dictionary
-        ev_charge_number = dictionary.get("EvChargeNumber") if dictionary.get("EvChargeNumber") else None
-        evse_id = dictionary.get("EvseId") if dictionary.get("EvseId") else None
+        ev_charge_number = dictionary.get("evChargeNumber") if dictionary.get("evChargeNumber") else None
+        evse_id = dictionary.get("evseId") if dictionary.get("evseId") else None
         # Return an object of this model
         return cls(ev_charge_number,
                    evse_id)

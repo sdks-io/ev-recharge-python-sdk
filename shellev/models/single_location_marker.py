@@ -17,7 +17,7 @@ class SingleLocationMarker(object):
     A Marker is a place on the map that represent a single Location
 
     Attributes:
-        marker_type (str): Identifies the marker type. If it''s a
+        marker_type (str): Identifies the marker type. If it’s a
             `SingleLocationMarker`, then the value is `SingleLocation`
         unique_key (str): Uniquely identifies the marker object
         status (SingleLocationMarkerStatusEnum): Minimum of all status values
@@ -155,9 +155,11 @@ class SingleLocationMarker(object):
         """
 
         if isinstance(dictionary, cls):
-            return APIHelper.is_valid_type(value=dictionary.marker_type, type_callable=lambda value: isinstance(value, str))
+            return APIHelper.is_valid_type(value=dictionary.marker_type,
+                                           type_callable=lambda value: isinstance(value, str))
 
         if not isinstance(dictionary, dict):
             return False
 
-        return APIHelper.is_valid_type(value=dictionary.get('markerType'), type_callable=lambda value: isinstance(value, str))
+        return APIHelper.is_valid_type(value=dictionary.get('markerType'),
+                                       type_callable=lambda value: isinstance(value, str))

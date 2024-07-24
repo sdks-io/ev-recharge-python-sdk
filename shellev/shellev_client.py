@@ -13,20 +13,20 @@ from shellev.configuration import Configuration
 from shellev.controllers.base_controller import BaseController
 from shellev.configuration import Environment
 from shellev.http.auth.o_auth_2 import OAuth2
-from shellev.controllers.charging_controller import ChargingController
 from shellev.controllers.locations_controller import LocationsController
+from shellev.controllers.charging_controller import ChargingController
 from shellev.controllers.o_auth_authorization_controller\
     import OAuthAuthorizationController
 
 
 class ShellevClient(object):
     @LazyProperty
-    def charging(self):
-        return ChargingController(self.global_configuration)
-
-    @LazyProperty
     def locations(self):
         return LocationsController(self.global_configuration)
+
+    @LazyProperty
+    def charging(self):
+        return ChargingController(self.global_configuration)
 
     @LazyProperty
     def o_auth_authorization(self):
@@ -40,7 +40,7 @@ class ShellevClient(object):
                  override_http_client_configuration=False, http_call_back=None,
                  timeout=60, max_retries=0, backoff_factor=2,
                  retry_statuses=None, retry_methods=None,
-                 environment=Environment.PRODUCTION, env='api-test.shell.com',
+                 environment=Environment.PRODUCTION,
                  client_credentials_auth_credentials=None, config=None):
         self.config = config or Configuration(
             http_client_instance=http_client_instance,
@@ -48,7 +48,7 @@ class ShellevClient(object):
             http_call_back=http_call_back, timeout=timeout,
             max_retries=max_retries, backoff_factor=backoff_factor,
             retry_statuses=retry_statuses, retry_methods=retry_methods,
-            environment=environment, env=env,
+            environment=environment,
             client_credentials_auth_credentials=client_credentials_auth_credentials)
 
         self.global_configuration = GlobalConfiguration(self.config)\

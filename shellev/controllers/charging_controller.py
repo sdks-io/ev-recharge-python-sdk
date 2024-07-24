@@ -19,14 +19,12 @@ from shellev.models.inline_response_202 import InlineResponse202
 from shellev.models.inline_response_2021 import InlineResponse2021
 from shellev.models.get_charge_session_retrieve_response_200_json import GetChargeSessionRetrieveResponse200Json
 from shellev.models.active_response_200_json import ActiveResponse200Json
-from shellev.exceptions.m_400_error_response_error_1_exception import M400ErrorResponseError1Exception
-from shellev.exceptions.http_401_error_response_exception import HTTP401ErrorResponseException
-from shellev.exceptions.m_404_error_response_error_1_exception import M404ErrorResponseError1Exception
-from shellev.exceptions.m_405_error_response_error_1_exception import M405ErrorResponseError1Exception
-from shellev.exceptions.m_429_error_response_error_1_exception import M429ErrorResponseError1Exception
-from shellev.exceptions.m_500_error_response_error_1_exception import M500ErrorResponseError1Exception
-from shellev.exceptions.m_503_error_response_error_1_exception import M503ErrorResponseError1Exception
-from shellev.exceptions.m_401_error_response_error_1_exception import M401ErrorResponseError1Exception
+from shellev.exceptions.bad_request_exception import BadRequestException
+from shellev.exceptions.unauthorized_exception import UnauthorizedException
+from shellev.exceptions.not_found_exception import NotFoundException
+from shellev.exceptions.too_many_requests_exception import TooManyRequestsException
+from shellev.exceptions.internal_server_error_exception import InternalServerErrorException
+from shellev.exceptions.serviceunavailable_exception import ServiceunavailableException
 
 
 class ChargingController(BaseController):
@@ -35,21 +33,21 @@ class ChargingController(BaseController):
     def __init__(self, config):
         super(ChargingController, self).__init__(config)
 
-    def start_charge_session(self,
-                             request_id,
-                             body=None):
+    def start(self,
+              request_id,
+              body=None):
         """Does a POST request to /ev/v1/charge-session/start.
 
-        This API initiates to start a session on a EVSE (Electric Vehicle
-        Supply Equipement). When the EV Charge Card number and the unique EVSE
-        ID on the location is provided, the session is initiated. 
-        Please note that this is an asynchronous request, the request will be
-        passed on to the operator/platform to be processed further. 
+        This endpoint start the charging session for the user.
 
         Args:
-            request_id (uuid|str): A unique request id in GUID format. The
-                value is written to the Shell API Platform audit log for end
-                to end traceability of a request.
+            request_id (uuid|str): RequestId must be unique identifier value
+                that can be used by the consumer to correlate each request
+                /response .<br>Format.<br> Its canonical textual
+                representation, the 16 octets of a UUID are represented as 32
+                hexadecimal (base-16) digits, displayed in five groups
+                separated by hyphens, in the form 8-4-4-4-12 for a total of 36
+                characters (32 hexadecimal characters and 4 hyphens) <br>
             body (ChargesessionStartBody, optional): TODO: type description
                 here.
 
@@ -85,35 +83,31 @@ class ChargingController(BaseController):
             ResponseHandler()
             .deserializer(APIHelper.json_deserialize)
             .deserialize_into(InlineResponse202.from_dictionary)
-            .local_error('400', 'Bad Request\n', M400ErrorResponseError1Exception)
-            .local_error('401', 'Unauthorized', HTTP401ErrorResponseException)
-            .local_error('404', 'Invalid charge token with given EmaId was not found.\n\nBackend HTTP 410 should be transformed to 404.', M404ErrorResponseError1Exception)
-            .local_error('405', 'Method Not Allowed', M405ErrorResponseError1Exception)
-            .local_error('429', 'Too Many Requests', M429ErrorResponseError1Exception)
-            .local_error('500', 'Internal Server Error', M500ErrorResponseError1Exception)
-            .local_error('503', 'Returned when a connectivity failure is encountered like DB connection failed, endpoint failed etc or when max number of retries are completed', M503ErrorResponseError1Exception)
+            .local_error('400', 'The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).', BadRequestException)
+            .local_error('401', 'The request has not been applied because it lacks valid authentication credentials for the target resource.', UnauthorizedException)
+            .local_error('404', 'Location Not Found', NotFoundException)
+            .local_error('429', 'The Request reached maximum allocated rate limit', TooManyRequestsException)
+            .local_error('500', 'Internal Server error', InternalServerErrorException)
+            .local_error('503', 'Service unavailable', ServiceunavailableException)
         ).execute()
 
-    def stop_charge_session(self,
-                            request_id,
-                            uuid,
-                            body=None):
-        """Does a POST request to /ev/v1/charge-session/stop/{uuid}.
+    def stop(self,
+             request_id,
+             session_id):
+        """Does a POST request to /ev/v1/charge-session/stop.
 
-        This API stops a session by providing the session ID which was
-        retrieved when starting the session. HTTP 202 response will be
-        returned if the request is accepted. Once the session is stopped the
-        response will contain the DateTime on which it is stopped.     
-        operationId: Stop
+        Accepts a request to stop an active session when a valid session id is
+        provided.
 
         Args:
-            request_id (uuid|str): A unique request id in GUID format. The
-                value is written to the Shell API Platform audit log for end
-                to end traceability of a request.
-            uuid (uuid|str): Unique session ID which was generated to activate
-                a charging session.
-            body (StopChargeSessionRequestBodyJson, optional): TODO: type
-                description here.
+            request_id (uuid|str): RequestId must be unique identifier value
+                that can be used by the consumer to correlate each request
+                /response .<br>Format.<br> Its canonical textual
+                representation, the 16 octets of a UUID are represented as 32
+                hexadecimal (base-16) digits, displayed in five groups
+                separated by hyphens, in the form 8-4-4-4-12 for a total of 36
+                characters (32 hexadecimal characters and 4 hyphens) <br>
+            session_id (str): Session Id
 
         Returns:
             InlineResponse2021: Response from the API. SUCCESS
@@ -128,55 +122,47 @@ class ChargingController(BaseController):
 
         return super().new_api_call_builder.request(
             RequestBuilder().server(Server.DEFAULT)
-            .path('/ev/v1/charge-session/stop/{uuid}')
+            .path('/ev/v1/charge-session/stop')
             .http_method(HttpMethodEnum.POST)
             .header_param(Parameter()
                           .key('RequestId')
                           .value(request_id))
-            .template_param(Parameter()
-                            .key('uuid')
-                            .value(uuid)
-                            .should_encode(True))
-            .header_param(Parameter()
-                          .key('Content-Type')
-                          .value('application/json'))
-            .body_param(Parameter()
-                        .value(body))
+            .query_param(Parameter()
+                         .key('sessionId')
+                         .value(session_id))
             .header_param(Parameter()
                           .key('accept')
                           .value('application/json'))
-            .body_serializer(APIHelper.json_serialize)
             .auth(Single('BearerAuth'))
         ).response(
             ResponseHandler()
             .deserializer(APIHelper.json_deserialize)
             .deserialize_into(InlineResponse2021.from_dictionary)
-            .local_error('400', 'Bad Request\n', M400ErrorResponseError1Exception)
-            .local_error('401', 'Unauthorized', M401ErrorResponseError1Exception)
-            .local_error('404', 'Session not found or Session has already been stopped. Map 410 Error message into 404.', M404ErrorResponseError1Exception)
-            .local_error('405', 'Method Not Allowed', M405ErrorResponseError1Exception)
-            .local_error('429', 'Too Many Requests', M429ErrorResponseError1Exception)
-            .local_error('500', 'Internal Server Error', M500ErrorResponseError1Exception)
-            .local_error('503', 'Returned when a connectivity failure is encountered like DB connection failed, endpoint failed etc or when max number of retries are completed\n', M503ErrorResponseError1Exception)
+            .local_error('400', 'The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).', BadRequestException)
+            .local_error('401', 'The request has not been applied because it lacks valid authentication credentials for the target resource.', UnauthorizedException)
+            .local_error('404', 'Location Not Found', NotFoundException)
+            .local_error('429', 'The Request reached maximum allocated rate limit', TooManyRequestsException)
+            .local_error('500', 'Internal Server error', InternalServerErrorException)
+            .local_error('503', 'Service unavailable', ServiceunavailableException)
         ).execute()
 
     def get_charge_session_retrieve(self,
                                     request_id,
-                                    session_id,
-                                    uuid):
-        """Does a GET request to /ev/v1/charge-session/retrieve/{uuid}.
+                                    session_id):
+        """Does a GET request to /ev/v1/charge-session/retrieve.
 
-        This API retrieves the status and details of the session which was
-        started by the user. The session ID generated earlier needs to be
-        passed in this API in order to retrieve the status.
+        This endpoint returns the details of the session if the session is
+        found.
 
         Args:
-            request_id (uuid|str): A unique request id in GUID format. The
-                value is written to the Shell API Platform audit log for end
-                to end traceability of a request.
-            session_id (str): Session Id is to be fetched
-            uuid (uuid|str): Unique session ID which was generated to activate
-                a charging session.
+            request_id (uuid|str): RequestId must be unique identifier value
+                that can be used by the consumer to correlate each request
+                /response .<br>Format.<br> Its canonical textual
+                representation, the 16 octets of a UUID are represented as 32
+                hexadecimal (base-16) digits, displayed in five groups
+                separated by hyphens, in the form 8-4-4-4-12 for a total of 36
+                characters (32 hexadecimal characters and 4 hyphens) <br>
+            session_id (str): Session Id
 
         Returns:
             GetChargeSessionRetrieveResponse200Json: Response from the API.
@@ -192,18 +178,14 @@ class ChargingController(BaseController):
 
         return super().new_api_call_builder.request(
             RequestBuilder().server(Server.DEFAULT)
-            .path('/ev/v1/charge-session/retrieve/{uuid}')
+            .path('/ev/v1/charge-session/retrieve')
             .http_method(HttpMethodEnum.GET)
             .header_param(Parameter()
                           .key('RequestId')
                           .value(request_id))
             .query_param(Parameter()
-                         .key('SessionId')
+                         .key('sessionId')
                          .value(session_id))
-            .template_param(Parameter()
-                            .key('uuid')
-                            .value(uuid)
-                            .should_encode(True))
             .header_param(Parameter()
                           .key('accept')
                           .value('application/json'))
@@ -212,28 +194,30 @@ class ChargingController(BaseController):
             ResponseHandler()
             .deserializer(APIHelper.json_deserialize)
             .deserialize_into(GetChargeSessionRetrieveResponse200Json.from_dictionary)
-            .local_error('400', 'Bad Request', M400ErrorResponseError1Exception)
-            .local_error('401', 'Unauthorized', M401ErrorResponseError1Exception)
-            .local_error('404', 'Not Found', M404ErrorResponseError1Exception)
-            .local_error('405', 'Method Not Allowed', M405ErrorResponseError1Exception)
-            .local_error('429', 'Too Many Requests', M429ErrorResponseError1Exception)
-            .local_error('500', 'Internal Server Error', M500ErrorResponseError1Exception)
-            .local_error('503', 'Service Unavailable', M503ErrorResponseError1Exception)
+            .local_error('400', 'The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).', BadRequestException)
+            .local_error('401', 'The request has not been applied because it lacks valid authentication credentials for the target resource.', UnauthorizedException)
+            .local_error('404', 'Location Not Found', NotFoundException)
+            .local_error('429', 'The Request reached maximum allocated rate limit', TooManyRequestsException)
+            .local_error('500', 'Internal Server error', InternalServerErrorException)
+            .local_error('503', 'Service unavailable', ServiceunavailableException)
         ).execute()
 
     def active(self,
-               ema_id,
-               request_id):
+               request_id,
+               ema_id):
         """Does a GET request to /ev/v1/charge-session/active.
 
-        This API retrieves the list of active sessions for a given set of
-        EMAIds
+        Fetrches the active sessions for user.
 
         Args:
+            request_id (uuid|str): RequestId must be unique identifier value
+                that can be used by the consumer to correlate each request
+                /response .<br>Format.<br> Its canonical textual
+                representation, the 16 octets of a UUID are represented as 32
+                hexadecimal (base-16) digits, displayed in five groups
+                separated by hyphens, in the form 8-4-4-4-12 for a total of 36
+                characters (32 hexadecimal characters and 4 hyphens) <br>
             ema_id (str): Emobility Account Identifier(Ema-ID)
-            request_id (uuid|str): A unique request id in GUID format. The
-                value is written to the Shell API Platform audit log for end
-                to end traceability of a request.
 
         Returns:
             ActiveResponse200Json: Response from the API. SUCCESS
@@ -250,12 +234,12 @@ class ChargingController(BaseController):
             RequestBuilder().server(Server.DEFAULT)
             .path('/ev/v1/charge-session/active')
             .http_method(HttpMethodEnum.GET)
-            .query_param(Parameter()
-                         .key('EmaId')
-                         .value(ema_id))
             .header_param(Parameter()
                           .key('RequestId')
                           .value(request_id))
+            .query_param(Parameter()
+                         .key('emaId')
+                         .value(ema_id))
             .header_param(Parameter()
                           .key('accept')
                           .value('application/json'))
@@ -264,11 +248,4 @@ class ChargingController(BaseController):
             ResponseHandler()
             .deserializer(APIHelper.json_deserialize)
             .deserialize_into(ActiveResponse200Json.from_dictionary)
-            .local_error('400', 'Bad Request\n', M400ErrorResponseError1Exception)
-            .local_error('401', 'Unauthorized', M401ErrorResponseError1Exception)
-            .local_error('404', 'Session not found or Session has already been stopped. Map 410 Error message into 404.', M404ErrorResponseError1Exception)
-            .local_error('405', 'Method Not Allowed', M405ErrorResponseError1Exception)
-            .local_error('429', 'Too Many Requests', M429ErrorResponseError1Exception)
-            .local_error('500', 'Internal Server Error', M500ErrorResponseError1Exception)
-            .local_error('503', 'Returned when a connectivity failure is encountered like DB connection failed, endpoint failed etc or when max number of retries are completed\n', M503ErrorResponseError1Exception)
         ).execute()

@@ -19,7 +19,7 @@ class TariffVO(object):
         start_fee (float): Tariff to start a charging session
         per_minute (float): Tariff per minute of charging time
         per_k_wh (float): Tariff per kWh of energy consumed
-        currency (str): ISO 4217 Curreny Code of the local currency.
+        currency (str): ISO 4217 Currency Code of the local currency.
         updated (str): ISO8601-compliant UTC datetime of the last update of
             the Tariff
         updated_by (TariffVOUpdatedByEnum): Source of the last update of the

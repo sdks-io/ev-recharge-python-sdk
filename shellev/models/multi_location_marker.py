@@ -128,9 +128,11 @@ class MultiLocationMarker(object):
         """
 
         if isinstance(dictionary, cls):
-            return APIHelper.is_valid_type(value=dictionary.marker_type, type_callable=lambda value: isinstance(value, str))
+            return APIHelper.is_valid_type(value=dictionary.marker_type,
+                                           type_callable=lambda value: isinstance(value, str))
 
         if not isinstance(dictionary, dict):
             return False
 
-        return APIHelper.is_valid_type(value=dictionary.get('markerType'), type_callable=lambda value: isinstance(value, str))
+        return APIHelper.is_valid_type(value=dictionary.get('markerType'),
+                                       type_callable=lambda value: isinstance(value, str))

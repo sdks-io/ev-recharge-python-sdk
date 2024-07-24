@@ -25,8 +25,8 @@ class InlineResponse2021(object):
 
     # Create a mapping from Model property names to API property names
     _names = {
-        "request_id": 'RequestId',
-        "status": 'Status'
+        "request_id": 'requestId',
+        "status": 'status'
     }
 
     def __init__(self,
@@ -57,8 +57,8 @@ class InlineResponse2021(object):
             return None
 
         # Extract variables from the dictionary
-        request_id = dictionary.get("RequestId") if dictionary.get("RequestId") else None
-        status = dictionary.get("Status") if dictionary.get("Status") else None
+        request_id = dictionary.get("requestId") if dictionary.get("requestId") else None
+        status = dictionary.get("status") if dictionary.get("status") else None
         # Return an object of this model
         return cls(request_id,
                    status)
