@@ -16,8 +16,8 @@ class ElectricalProperties(object):
     Electrical Properties of the Connector
 
     Attributes:
-        power_type (ElectricalPropertiesPowerTypeEnum): Power Type used in
-            this connector.
+        power_type (ElectricalPropertiesPowerTypeEnum): TODO: type description
+            here.
         voltage (float): Voltage in Volts for this connector
         amperage (float): Electric Current in Amperes for this connector
         max_electric_power (float): Power in Kilowatts for this connector
@@ -71,7 +71,7 @@ class ElectricalProperties(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary

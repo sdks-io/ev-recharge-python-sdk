@@ -28,6 +28,7 @@ __all__ = [
     'data_active',
     'get_charge_session_retrieve_response_200_json',
     'active_response_200_json',
+    'tariff',
     'o_auth_token',
     'single_location_marker_authorization_methods_items_enum',
     'get_ev_locations_evse_status_enum',

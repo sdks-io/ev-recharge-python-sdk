@@ -12,7 +12,7 @@ class NearbyLocationsConnectorTypesEnum(object):
 
     """Implementation of the 'nearbyLocationsConnectorTypes' enum.
 
-    TODO: type enum description here.
+    Filter by Locations that have Connectors with these Connector Types
 
     Attributes:
         AVCON: TODO: type description here.

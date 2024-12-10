@@ -36,7 +36,7 @@ class ChargingController(BaseController):
     def start(self,
               request_id,
               body=None):
-        """Does a POST request to /ev/v1/charge-session/start.
+        """Does a POST request to /charge-session/start.
 
         This endpoint start the charging session for the user.
 
@@ -64,7 +64,7 @@ class ChargingController(BaseController):
 
         return super().new_api_call_builder.request(
             RequestBuilder().server(Server.DEFAULT)
-            .path('/ev/v1/charge-session/start')
+            .path('/charge-session/start')
             .http_method(HttpMethodEnum.POST)
             .header_param(Parameter()
                           .key('RequestId')
@@ -94,7 +94,7 @@ class ChargingController(BaseController):
     def stop(self,
              request_id,
              session_id):
-        """Does a POST request to /ev/v1/charge-session/stop.
+        """Does a POST request to /charge-session/stop.
 
         Accepts a request to stop an active session when a valid session id is
         provided.
@@ -122,7 +122,7 @@ class ChargingController(BaseController):
 
         return super().new_api_call_builder.request(
             RequestBuilder().server(Server.DEFAULT)
-            .path('/ev/v1/charge-session/stop')
+            .path('/charge-session/stop')
             .http_method(HttpMethodEnum.POST)
             .header_param(Parameter()
                           .key('RequestId')
@@ -149,7 +149,7 @@ class ChargingController(BaseController):
     def get_charge_session_retrieve(self,
                                     request_id,
                                     session_id):
-        """Does a GET request to /ev/v1/charge-session/retrieve.
+        """Does a GET request to /charge-session/retrieve.
 
         This endpoint returns the details of the session if the session is
         found.
@@ -178,7 +178,7 @@ class ChargingController(BaseController):
 
         return super().new_api_call_builder.request(
             RequestBuilder().server(Server.DEFAULT)
-            .path('/ev/v1/charge-session/retrieve')
+            .path('/charge-session/retrieve')
             .http_method(HttpMethodEnum.GET)
             .header_param(Parameter()
                           .key('RequestId')
@@ -205,7 +205,7 @@ class ChargingController(BaseController):
     def active(self,
                request_id,
                ema_id):
-        """Does a GET request to /ev/v1/charge-session/active.
+        """Does a GET request to /charge-session/active.
 
         Fetrches the active sessions for user.
 
@@ -232,7 +232,7 @@ class ChargingController(BaseController):
 
         return super().new_api_call_builder.request(
             RequestBuilder().server(Server.DEFAULT)
-            .path('/ev/v1/charge-session/active')
+            .path('/charge-session/active')
             .http_method(HttpMethodEnum.GET)
             .header_param(Parameter()
                           .key('RequestId')

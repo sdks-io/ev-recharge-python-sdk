@@ -20,9 +20,7 @@ class SingleLocationMarker(object):
         marker_type (str): Identifies the marker type. If it’s a
             `SingleLocationMarker`, then the value is `SingleLocation`
         unique_key (str): Uniquely identifies the marker object
-        status (SingleLocationMarkerStatusEnum): Minimum of all status values
-            in the Marker, e.g. if at least one Evse in the Marker is
-            available, the value will be available
+        status (SingleLocationMarkerStatusEnum): TODO: type description here.
         coordinates (Coordinates): Coordinates of the Shell Recharge Site
             Location
         evse_count (float): Total number of Evse units in Locations that this
@@ -30,8 +28,7 @@ class SingleLocationMarker(object):
         max_power (float): Maximum power in kW across all locations grouped in
             this marker (disregarding availability)
         geo_hash (str): GeoHash of marker coordinates
-        location_uid (float): Unique ID of the Location this Marker
-            represents
+        location_uid (float): Unique ID of the Location this Marker represents
         authorization_methods
             (List[SingleLocationMarkerAuthorizationMethodsItemsEnum]): Methods
             that can be used to Authorize sessions on this EVSE
@@ -114,7 +111,7 @@ class SingleLocationMarker(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary

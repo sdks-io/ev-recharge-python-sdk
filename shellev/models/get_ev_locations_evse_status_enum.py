@@ -12,7 +12,7 @@ class GetEVLocationsEvseStatusEnum(object):
 
     """Implementation of the 'getEVLocationsEvseStatus' enum.
 
-    TODO: type enum description here.
+    Filter by Locations that have the given status
 
     Attributes:
         AVAILABLE: TODO: type description here.

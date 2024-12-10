@@ -12,7 +12,7 @@ class GetEVLocationsConnectorTypesEnum(object):
 
     """Implementation of the 'getEVLocationsConnectorTypes' enum.
 
-    TODO: type enum description here.
+    Filter by Locations that have Connectors with the set of Connector Types
 
     Attributes:
         AVCON: TODO: type description here.

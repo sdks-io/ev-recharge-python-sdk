@@ -18,8 +18,8 @@ class InlineResponse2021(object):
         request_id (uuid|str): Mandatory UUID (according to RFC 4122
             standards) for requests and responses. This will be played back in
             the response from the request.
-        status (InlineResponse2021StatusEnum): Indicates overall status of the
-            request
+        status (GetChargeSessionRetrieveResponse200JsonStatusEnum): TODO: type
+            description here.
 
     """
 
@@ -53,7 +53,7 @@ class InlineResponse2021(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary

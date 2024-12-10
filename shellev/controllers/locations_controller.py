@@ -46,7 +46,7 @@ class LocationsController(BaseController):
                          updated_since=None,
                          country=None,
                          exclude_country=None):
-        """Does a GET request to /locations/v1/ev.
+        """Does a GET request to /locations.
 
         This API provides the list of all Shell Recharge locations. The list
         includes all Shell Recharge network and all locations available
@@ -115,7 +115,7 @@ class LocationsController(BaseController):
 
         return super().new_api_call_builder.request(
             RequestBuilder().server(Server.DEFAULT)
-            .path('/locations/v1/ev')
+            .path('/locations')
             .http_method(HttpMethodEnum.GET)
             .header_param(Parameter()
                           .key('RequestId')
@@ -180,7 +180,7 @@ class LocationsController(BaseController):
                            id,
                            provider_id=None,
                            since=None):
-        """Does a GET request to /locations/v1/ev/{id}.
+        """Does a GET request to /locations/{id}.
 
         This API provides the details on a single Shell Recharge location. 
         The query for a single location is to be made using the Unique
@@ -213,7 +213,7 @@ class LocationsController(BaseController):
 
         return super().new_api_call_builder.request(
             RequestBuilder().server(Server.DEFAULT)
-            .path('/locations/v1/ev/{id}')
+            .path('/locations/{id}')
             .http_method(HttpMethodEnum.GET)
             .header_param(Parameter()
                           .key('RequestId')
@@ -261,7 +261,7 @@ class LocationsController(BaseController):
                          with_max_power=None,
                          country=None,
                          exclude_country=None):
-        """Does a GET request to /locations/v1/ev/nearby.
+        """Does a GET request to /locations/nearby.
 
         This API provides the list of all nearby Shell Recharge locations
         based on the latitude and longitude provided in the request. 
@@ -285,8 +285,7 @@ class LocationsController(BaseController):
                 separated by hyphens, in the form 8-4-4-4-12 for a total of 36
                 characters (32 hexadecimal characters and 4 hyphens) <br>
             latitude (float): Latitude to get Shell Recharge Locations nearby
-            longitude (float): Longitude to get Shell Recharge Locations
-                nearby
+            longitude (float): Longitude to get Shell Recharge Locations nearby
             limit (float, optional): Maximum number of Locations to retrieve
             location_external_id (str, optional): Filter by Locations with the
                 given externalId Identifier as given by the Shell Recharge
@@ -298,14 +297,14 @@ class LocationsController(BaseController):
                 given by the Operator, unique for that Operator
             operator_name (str, optional): Filter by Locations that have the
                 given operator
-            evse_status (NearbyLocationsEvseStatusEnum, optional): Filter by
+            evse_status (GetEVLocationsEvseStatusEnum, optional): Filter by
                 Locations that have the given status
             connector_types (NearbyLocationsConnectorTypesEnum, optional):
                 Filter by Locations that have Connectors with these Connector
                 Types
             connector_min_power (float, optional): Filter by Locations that
                 have a Connector with at least this power output (in kW)
-            authorization_methods (NearbyLocationsAuthorizationMethodsEnum,
+            authorization_methods (GetEVLocationsAuthorizationMethodsEnum,
                 optional): Filter by Locations that support the given
                 Authorization Methods
             with_operator_name (bool, optional): Return operator name in
@@ -333,7 +332,7 @@ class LocationsController(BaseController):
 
         return super().new_api_call_builder.request(
             RequestBuilder().server(Server.DEFAULT)
-            .path('/locations/v1/ev/nearby')
+            .path('/locations/nearby')
             .http_method(HttpMethodEnum.GET)
             .header_param(Parameter()
                           .key('RequestId')
@@ -418,14 +417,14 @@ class LocationsController(BaseController):
                           operator_name=None,
                           country=None,
                           exclude_country=None):
-        """Does a GET request to /locations/v1/ev/markers.
+        """Does a GET request to /locations/markers.
 
         This API, when given a set of bounds on the geographical front
         (East,West, North, South) will return a set of Markers that fall
         within the requested bounds. The API will automatically group
         locations at the same position on the map into one Marker. 
-        The API also provide further search options to filter the result set.
-                  * Based on status of the Charging units. Eg : Available or Occupied
+        The API also provide further search options to filter the result set. 
+          * Based on status of the Charging units. Eg : Available or Occupied
           * Based on available connector types.
           * Based on minimum Power output (in kW) available
 
@@ -447,14 +446,14 @@ class LocationsController(BaseController):
                 Recharge Locations
             zoom (str): Zoom level to show ex: (1: World, 5:
                 Landmass/continent, 10: City, 15: Streets, 20: Buildings)
-            evse_status (LocationsMarkersEvseStatusEnum, optional): Filter by
+            evse_status (GetEVLocationsEvseStatusEnum, optional): Filter by
                 Locations that have the given status
-            connector_types (LocationsMarkersConnectorTypesEnum, optional):
+            connector_types (GetEVLocationsConnectorTypesEnum, optional):
                 Filter by Locations that have Connectors with the set of
                 Connector Types
             connector_min_power (float, optional): Filter by Locations that
                 have a Connector with at least this power output (in kW)
-            authorization_methods (LocationsMarkersAuthorizationMethodsEnum,
+            authorization_methods (GetEVLocationsAuthorizationMethodsEnum,
                 optional): Filter by Locations that support the given
                 Authorization Methods
             with_operator_name (bool, optional): Return operator name in
@@ -493,7 +492,7 @@ class LocationsController(BaseController):
 
         return super().new_api_call_builder.request(
             RequestBuilder().server(Server.DEFAULT)
-            .path('/locations/v1/ev/markers')
+            .path('/locations/markers')
             .http_method(HttpMethodEnum.GET)
             .header_param(Parameter()
                           .key('RequestId')

@@ -16,7 +16,7 @@ class OpeningHoursObject(object):
     TODO: type model description here.
 
     Attributes:
-        week_day (OpeningHoursObjectWeekDayEnum): 3 letter day of the week
+        week_day (OpeningHoursObjectWeekDayEnum): TODO: type description here.
         start_time (str): Hour in 24h local time when the location opens.
         end_time (str): Hour in 24h local time when the location closes.
 
@@ -64,7 +64,7 @@ class OpeningHoursObject(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary

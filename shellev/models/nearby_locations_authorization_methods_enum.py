@@ -12,7 +12,7 @@ class NearbyLocationsAuthorizationMethodsEnum(object):
 
     """Implementation of the 'nearbyLocationsAuthorizationMethods' enum.
 
-    TODO: type enum description here.
+    Filter by Locations that support the given Authorization Methods
 
     Attributes:
         NEWMOTIONAPP: TODO: type description here.

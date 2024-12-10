@@ -28,14 +28,13 @@ class OAuthAuthorizationController(BaseController):
                       authorization,
                       scope=None,
                       _optional_form_parameters=None):
-        """Does a POST request to /v1/oauth/token.
+        """Does a POST request to /token.
 
         Create a new OAuth 2 token.
 
         Args:
             authorization (str): Authorization header in Basic auth format
-            scope (str, optional): Requested scopes as a space-delimited
-                list.
+            scope (str, optional): Requested scopes as a space-delimited list.
             _optional_form_parameters (Array, optional): Additional optional
                 form parameters are supported by this endpoint
 
@@ -51,8 +50,8 @@ class OAuthAuthorizationController(BaseController):
         """
 
         return super().new_api_call_builder.request(
-            RequestBuilder().server(Server.DEFAULT)
-            .path('/v1/oauth/token')
+            RequestBuilder().server(Server.ACCESS_TOKEN_SERVER)
+            .path('/token')
             .http_method(HttpMethodEnum.POST)
             .form_param(Parameter()
                         .key('grant_type')

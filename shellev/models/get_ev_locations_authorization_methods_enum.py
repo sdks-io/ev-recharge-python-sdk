@@ -12,7 +12,7 @@ class GetEVLocationsAuthorizationMethodsEnum(object):
 
     """Implementation of the 'getEVLocationsAuthorizationMethods' enum.
 
-    TODO: type enum description here.
+    Filter by Locations that support the given Authorization Methods
 
     Attributes:
         NEWMOTIONAPP: TODO: type description here.

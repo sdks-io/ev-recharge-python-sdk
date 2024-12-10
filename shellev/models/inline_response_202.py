@@ -19,8 +19,8 @@ class InlineResponse202(object):
         request_id (uuid|str): Mandatory UUID (according to RFC 4122
             standards) for requests and responses. This will be played back in
             the response from the request.
-        status (InlineResponse202StatusEnum): Indicates overall status of the
-            request
+        status (GetChargeSessionRetrieveResponse200JsonStatusEnum): TODO: type
+            description here.
         data (List[InlineResponse202Data]): TODO: type description here.
 
     """
@@ -58,7 +58,7 @@ class InlineResponse202(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary

@@ -15,15 +15,16 @@ from apimatic_requests_client_adapter.requests_client import RequestsClient
 
 class Environment(Enum):
     """An enum for SDK environments"""
-    # Production
+    # Production Server
     PRODUCTION = 0
-    # Test
+    # Test Server
     ENVIRONMENT2 = 1
 
 
 class Server(Enum):
     """An enum for API servers"""
     DEFAULT = 0
+    ACCESS_TOKEN_SERVER = 1
 
 
 class Configuration(HttpClientConfiguration):
@@ -119,10 +120,12 @@ class Configuration(HttpClientConfiguration):
     # All the environments the SDK can run in
     environments = {
         Environment.PRODUCTION: {
-            Server.DEFAULT: 'https://api.shell.com'
+            Server.DEFAULT: 'https://api.shell.com/ev/v1',
+            Server.ACCESS_TOKEN_SERVER: 'https://api.shell.com/v1/oauth'
         },
         Environment.ENVIRONMENT2: {
-            Server.DEFAULT: 'https://api-test.shell.com'
+            Server.DEFAULT: 'https://api-test.shell.com/ev/v1',
+            Server.ACCESS_TOKEN_SERVER: 'https://api.shell.com/v1/oauth'
         }
     }
 

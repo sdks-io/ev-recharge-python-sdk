@@ -17,7 +17,7 @@ class ChargeRetrieveState(object):
     TODO: type model description here.
 
     Attributes:
-        status (str): Describes the session state    started, stopped,
+        status (str): Describes the session state   started, stopped,
             start-requested, stop-requested, failed-to-start, failed-to-stop
         error (ChargeError): TODO: type description here.
 
@@ -60,7 +60,7 @@ class ChargeRetrieveState(object):
 
         """
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary

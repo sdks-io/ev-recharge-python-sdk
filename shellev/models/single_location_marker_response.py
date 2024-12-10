@@ -68,7 +68,7 @@ class SingleLocationMarkerResponse(object):
         """
         from shellev.utilities.union_type_lookup import UnionTypeLookUp
 
-        if dictionary is None:
+        if not isinstance(dictionary, dict) or dictionary is None:
             return None
 
         # Extract variables from the dictionary

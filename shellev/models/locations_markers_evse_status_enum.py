@@ -12,7 +12,7 @@ class LocationsMarkersEvseStatusEnum(object):
 
     """Implementation of the 'locationsMarkersEvseStatus' enum.
 
-    TODO: type enum description here.
+    Filter by Locations that have the given status
 
     Attributes:
         AVAILABLE: TODO: type description here.
