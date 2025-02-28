@@ -13,10 +13,9 @@ class OpeningHoursObject(object):
 
     """Implementation of the 'OpeningHoursObject' model.
 
-    TODO: type model description here.
-
     Attributes:
-        week_day (OpeningHoursObjectWeekDayEnum): TODO: type description here.
+        week_day (OpeningHoursObjectWeekDayEnum): The model property of type
+            OpeningHoursObjectWeekDayEnum.
         start_time (str): Hour in 24h local time when the location opens.
         end_time (str): Hour in 24h local time when the location closes.
 
@@ -75,3 +74,15 @@ class OpeningHoursObject(object):
         return cls(week_day,
                    start_time,
                    end_time)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'week_day={(self.week_day if hasattr(self, "week_day") else None)!r}, '
+                f'start_time={(self.start_time if hasattr(self, "start_time") else None)!r}, '
+                f'end_time={(self.end_time if hasattr(self, "end_time") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'week_day={(self.week_day if hasattr(self, "week_day") else None)!s}, '
+                f'start_time={(self.start_time if hasattr(self, "start_time") else None)!s}, '
+                f'end_time={(self.end_time if hasattr(self, "end_time") else None)!s})')

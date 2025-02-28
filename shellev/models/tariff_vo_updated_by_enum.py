@@ -15,10 +15,10 @@ class TariffVOUpdatedByEnum(object):
     Source of the last update of the tariff details
 
     Attributes:
-        FEED: TODO: type description here.
-        ADMIN: TODO: type description here.
-        TARIFFSERVICE: TODO: type description here.
-        DEFAULTS: TODO: type description here.
+        FEED: The enum member of type str.
+        ADMIN: The enum member of type str.
+        TARIFFSERVICE: The enum member of type str.
+        DEFAULTS: The enum member of type str.
 
     """
     FEED = 'Feed'

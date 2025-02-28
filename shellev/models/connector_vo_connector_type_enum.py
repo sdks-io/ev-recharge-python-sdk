@@ -15,24 +15,24 @@ class ConnectorVOConnectorTypeEnum(object):
     Type of the connector in the EVSE unit.
 
     Attributes:
-        AVCON: TODO: type description here.
-        DOMESTIC: TODO: type description here.
-        INDUSTRIAL2PDC: TODO: type description here.
-        INDUSTRIALPNEAC: TODO: type description here.
-        INDUSTRIAL3PEAC: TODO: type description here.
-        INDUSTRIAL3PENAC: TODO: type description here.
-        TYPE1: TODO: type description here.
-        TYPE1COMBO: TODO: type description here.
-        TYPE2: TODO: type description here.
-        TYPE2COMBO: TODO: type description here.
-        TYPE3: TODO: type description here.
-        LPI: TODO: type description here.
-        NEMA520: TODO: type description here.
-        SAEJ1772: TODO: type description here.
-        SPI: TODO: type description here.
-        TEPCOCHADEMO: TODO: type description here.
-        TESLA: TODO: type description here.
-        UNSPECIFIED: TODO: type description here.
+        AVCON: The enum member of type str.
+        DOMESTIC: The enum member of type str.
+        INDUSTRIAL2PDC: The enum member of type str.
+        INDUSTRIALPNEAC: The enum member of type str.
+        INDUSTRIAL3PEAC: The enum member of type str.
+        INDUSTRIAL3PENAC: The enum member of type str.
+        TYPE1: The enum member of type str.
+        TYPE1COMBO: The enum member of type str.
+        TYPE2: The enum member of type str.
+        TYPE2COMBO: The enum member of type str.
+        TYPE3: The enum member of type str.
+        LPI: The enum member of type str.
+        NEMA520: The enum member of type str.
+        SAEJ1772: The enum member of type str.
+        SPI: The enum member of type str.
+        TEPCOCHADEMO: The enum member of type str.
+        TESLA: The enum member of type str.
+        UNSPECIFIED: The enum member of type str.
 
     """
     AVCON = 'Avcon'

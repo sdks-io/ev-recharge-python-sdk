@@ -14,8 +14,6 @@ class DataActive(object):
 
     """Implementation of the 'Data_Active' model.
 
-    TODO: type model description here.
-
     Attributes:
         id (uuid|str): Id of the session
         user_id (str): Id of the user that started the session
@@ -24,8 +22,9 @@ class DataActive(object):
             identifies a Charging Point.
         started_at (datetime): When the session is started
         stopped_at (datetime): When the session is stopped
-        session_state (ChargeRetrieveState): TODO: type description here.
-        last_updated (str): TODO: type description here.
+        session_state (ChargeRetrieveState): The model property of type
+            ChargeRetrieveState.
+        last_updated (str): The model property of type str.
 
     """
 
@@ -124,3 +123,25 @@ class DataActive(object):
                    stopped_at,
                    session_state,
                    last_updated)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'id={(self.id if hasattr(self, "id") else None)!r}, '
+                f'user_id={(self.user_id if hasattr(self, "user_id") else None)!r}, '
+                f'ema_id={(self.ema_id if hasattr(self, "ema_id") else None)!r}, '
+                f'evse_id={(self.evse_id if hasattr(self, "evse_id") else None)!r}, '
+                f'started_at={(self.started_at if hasattr(self, "started_at") else None)!r}, '
+                f'stopped_at={(self.stopped_at if hasattr(self, "stopped_at") else None)!r}, '
+                f'session_state={(self.session_state if hasattr(self, "session_state") else None)!r}, '
+                f'last_updated={(self.last_updated if hasattr(self, "last_updated") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'id={(self.id if hasattr(self, "id") else None)!s}, '
+                f'user_id={(self.user_id if hasattr(self, "user_id") else None)!s}, '
+                f'ema_id={(self.ema_id if hasattr(self, "ema_id") else None)!s}, '
+                f'evse_id={(self.evse_id if hasattr(self, "evse_id") else None)!s}, '
+                f'started_at={(self.started_at if hasattr(self, "started_at") else None)!s}, '
+                f'stopped_at={(self.stopped_at if hasattr(self, "stopped_at") else None)!s}, '
+                f'session_state={(self.session_state if hasattr(self, "session_state") else None)!s}, '
+                f'last_updated={(self.last_updated if hasattr(self, "last_updated") else None)!s})')

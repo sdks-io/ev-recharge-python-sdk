@@ -85,3 +85,17 @@ class Address(object):
                    postal_code,
                    city,
                    country)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'street_and_number={(self.street_and_number if hasattr(self, "street_and_number") else None)!r}, '
+                f'postal_code={(self.postal_code if hasattr(self, "postal_code") else None)!r}, '
+                f'city={(self.city if hasattr(self, "city") else None)!r}, '
+                f'country={(self.country if hasattr(self, "country") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'street_and_number={(self.street_and_number if hasattr(self, "street_and_number") else None)!s}, '
+                f'postal_code={(self.postal_code if hasattr(self, "postal_code") else None)!s}, '
+                f'city={(self.city if hasattr(self, "city") else None)!s}, '
+                f'country={(self.country if hasattr(self, "country") else None)!s})')

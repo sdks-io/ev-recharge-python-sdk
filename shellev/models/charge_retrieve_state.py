@@ -14,12 +14,10 @@ class ChargeRetrieveState(object):
 
     """Implementation of the 'ChargeRetrieveState' model.
 
-    TODO: type model description here.
-
     Attributes:
         status (str): Describes the session state   started, stopped,
             start-requested, stop-requested, failed-to-start, failed-to-stop
-        error (ChargeError): TODO: type description here.
+        error (ChargeError): The model property of type ChargeError.
 
     """
 
@@ -69,3 +67,13 @@ class ChargeRetrieveState(object):
         # Return an object of this model
         return cls(status,
                    error)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'status={(self.status if hasattr(self, "status") else None)!r}, '
+                f'error={(self.error if hasattr(self, "error") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'status={(self.status if hasattr(self, "status") else None)!s}, '
+                f'error={(self.error if hasattr(self, "error") else None)!s})')

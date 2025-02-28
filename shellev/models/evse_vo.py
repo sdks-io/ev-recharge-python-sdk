@@ -137,3 +137,27 @@ class EvseVO(object):
                    updated,
                    deleted,
                    physical_reference)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'uid={(self.uid if hasattr(self, "uid") else None)!r}, '
+                f'external_id={(self.external_id if hasattr(self, "external_id") else None)!r}, '
+                f'evse_id={(self.evse_id if hasattr(self, "evse_id") else None)!r}, '
+                f'status={(self.status if hasattr(self, "status") else None)!r}, '
+                f'connectors={(self.connectors if hasattr(self, "connectors") else None)!r}, '
+                f'authorization_methods={(self.authorization_methods if hasattr(self, "authorization_methods") else None)!r}, '
+                f'updated={(self.updated if hasattr(self, "updated") else None)!r}, '
+                f'deleted={(self.deleted if hasattr(self, "deleted") else None)!r}, '
+                f'physical_reference={(self.physical_reference if hasattr(self, "physical_reference") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'uid={(self.uid if hasattr(self, "uid") else None)!s}, '
+                f'external_id={(self.external_id if hasattr(self, "external_id") else None)!s}, '
+                f'evse_id={(self.evse_id if hasattr(self, "evse_id") else None)!s}, '
+                f'status={(self.status if hasattr(self, "status") else None)!s}, '
+                f'connectors={(self.connectors if hasattr(self, "connectors") else None)!s}, '
+                f'authorization_methods={(self.authorization_methods if hasattr(self, "authorization_methods") else None)!s}, '
+                f'updated={(self.updated if hasattr(self, "updated") else None)!s}, '
+                f'deleted={(self.deleted if hasattr(self, "deleted") else None)!s}, '
+                f'physical_reference={(self.physical_reference if hasattr(self, "physical_reference") else None)!s})')

@@ -15,9 +15,9 @@ class GetEVLocationsAuthorizationMethodsEnum(object):
     Filter by Locations that support the given Authorization Methods
 
     Attributes:
-        NEWMOTIONAPP: TODO: type description here.
-        RFIDTOKEN: TODO: type description here.
-        PNC: TODO: type description here.
+        NEWMOTIONAPP: The enum member of type str.
+        RFIDTOKEN: The enum member of type str.
+        PNC: The enum member of type str.
 
     """
     _all_values = ['NewMotionApp', 'RFIDToken', 'PnC']

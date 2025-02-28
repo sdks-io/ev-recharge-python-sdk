@@ -13,15 +13,13 @@ class RatelimitErrMsg(object):
 
     """Implementation of the 'RatelimitErrMsg' model.
 
-    TODO: type model description here.
-
     Attributes:
         code (str): Error code
         message (str): Error desctiption in English
         description (str): Technical details of the error message, the example
             which is given in the sample payload is one of the scenarios.
             actual response will vary based on the technical nature
-        details (List[str]): TODO: type description here.
+        details (List[str]): The model property of type List[str].
 
     """
 
@@ -85,3 +83,17 @@ class RatelimitErrMsg(object):
                    message,
                    description,
                    details)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'code={(self.code if hasattr(self, "code") else None)!r}, '
+                f'message={(self.message if hasattr(self, "message") else None)!r}, '
+                f'description={(self.description if hasattr(self, "description") else None)!r}, '
+                f'details={(self.details if hasattr(self, "details") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'code={(self.code if hasattr(self, "code") else None)!s}, '
+                f'message={(self.message if hasattr(self, "message") else None)!s}, '
+                f'description={(self.description if hasattr(self, "description") else None)!s}, '
+                f'details={(self.details if hasattr(self, "details") else None)!s})')

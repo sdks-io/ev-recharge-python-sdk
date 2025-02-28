@@ -12,8 +12,6 @@ class ChargesessionStartBody(object):
 
     """Implementation of the 'chargesession_start_body' model.
 
-    TODO: type model description here.
-
     Attributes:
         ev_charge_number (str): Ev charge number
         evse_id (str): This is the Electric Vehicle EquipmentID
@@ -59,3 +57,13 @@ class ChargesessionStartBody(object):
         # Return an object of this model
         return cls(ev_charge_number,
                    evse_id)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'ev_charge_number={self.ev_charge_number!r}, '
+                f'evse_id={self.evse_id!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'ev_charge_number={self.ev_charge_number!s}, '
+                f'evse_id={self.evse_id!s})')

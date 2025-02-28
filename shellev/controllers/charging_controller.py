@@ -48,8 +48,8 @@ class ChargingController(BaseController):
                 hexadecimal (base-16) digits, displayed in five groups
                 separated by hyphens, in the form 8-4-4-4-12 for a total of 36
                 characters (32 hexadecimal characters and 4 hyphens) <br>
-            body (ChargesessionStartBody, optional): TODO: type description
-                here.
+            body (ChargesessionStartBody, optional): The request body
+                parameter.
 
         Returns:
             InlineResponse202: Response from the API. SUCCESS

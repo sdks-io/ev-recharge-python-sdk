@@ -22,7 +22,8 @@ class TariffVO(object):
         currency (str): ISO 4217 Currency Code of the local currency.
         updated (str): ISO8601-compliant UTC datetime of the last update of
             the Tariff
-        updated_by (TariffVOUpdatedByEnum): TODO: type description here.
+        updated_by (TariffVOUpdatedByEnum): The model property of type
+            TariffVOUpdatedByEnum.
         structure (str): Tariff structure that this tariff belongs to,
             typically Default unless specific tariff is defined for provider
 
@@ -109,3 +110,23 @@ class TariffVO(object):
                    updated,
                    updated_by,
                    structure)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'start_fee={(self.start_fee if hasattr(self, "start_fee") else None)!r}, '
+                f'per_minute={(self.per_minute if hasattr(self, "per_minute") else None)!r}, '
+                f'per_k_wh={(self.per_k_wh if hasattr(self, "per_k_wh") else None)!r}, '
+                f'currency={(self.currency if hasattr(self, "currency") else None)!r}, '
+                f'updated={(self.updated if hasattr(self, "updated") else None)!r}, '
+                f'updated_by={(self.updated_by if hasattr(self, "updated_by") else None)!r}, '
+                f'structure={(self.structure if hasattr(self, "structure") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'start_fee={(self.start_fee if hasattr(self, "start_fee") else None)!s}, '
+                f'per_minute={(self.per_minute if hasattr(self, "per_minute") else None)!s}, '
+                f'per_k_wh={(self.per_k_wh if hasattr(self, "per_k_wh") else None)!s}, '
+                f'currency={(self.currency if hasattr(self, "currency") else None)!s}, '
+                f'updated={(self.updated if hasattr(self, "updated") else None)!s}, '
+                f'updated_by={(self.updated_by if hasattr(self, "updated_by") else None)!s}, '
+                f'structure={(self.structure if hasattr(self, "structure") else None)!s})')

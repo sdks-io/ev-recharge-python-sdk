@@ -13,15 +13,14 @@ class InlineResponse202(object):
 
     """Implementation of the 'inline_response_202' model.
 
-    TODO: type model description here.
-
     Attributes:
         request_id (uuid|str): Mandatory UUID (according to RFC 4122
             standards) for requests and responses. This will be played back in
             the response from the request.
-        status (GetChargeSessionRetrieveResponse200JsonStatusEnum): TODO: type
-            description here.
-        data (List[InlineResponse202Data]): TODO: type description here.
+        status (GetChargeSessionRetrieveResponse200JsonStatusEnum): The model
+            property of type GetChargeSessionRetrieveResponse200JsonStatusEnum.
+        data (List[InlineResponse202Data]): The model property of type
+            List[InlineResponse202Data].
 
     """
 
@@ -71,3 +70,15 @@ class InlineResponse202(object):
         return cls(request_id,
                    status,
                    data)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'request_id={self.request_id!r}, '
+                f'status={self.status!r}, '
+                f'data={self.data!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'request_id={self.request_id!s}, '
+                f'status={self.status!s}, '
+                f'data={self.data!s})')

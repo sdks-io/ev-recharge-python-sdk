@@ -13,8 +13,6 @@ class InlineResponse202Data(object):
 
     """Implementation of the 'inline_response_202_Data' model.
 
-    TODO: type model description here.
-
     Attributes:
         session_id (str): Session Id for tracking.
 
@@ -59,3 +57,11 @@ class InlineResponse202Data(object):
         session_id = dictionary.get("sessionId") if dictionary.get("sessionId") else APIHelper.SKIP
         # Return an object of this model
         return cls(session_id)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'session_id={(self.session_id if hasattr(self, "session_id") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'session_id={(self.session_id if hasattr(self, "session_id") else None)!s})')

@@ -16,8 +16,8 @@ class ElectricalProperties(object):
     Electrical Properties of the Connector
 
     Attributes:
-        power_type (ElectricalPropertiesPowerTypeEnum): TODO: type description
-            here.
+        power_type (ElectricalPropertiesPowerTypeEnum): The model property of
+            type ElectricalPropertiesPowerTypeEnum.
         voltage (float): Voltage in Volts for this connector
         amperage (float): Electric Current in Amperes for this connector
         max_electric_power (float): Power in Kilowatts for this connector
@@ -84,3 +84,17 @@ class ElectricalProperties(object):
                    voltage,
                    amperage,
                    max_electric_power)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'power_type={(self.power_type if hasattr(self, "power_type") else None)!r}, '
+                f'voltage={(self.voltage if hasattr(self, "voltage") else None)!r}, '
+                f'amperage={(self.amperage if hasattr(self, "amperage") else None)!r}, '
+                f'max_electric_power={(self.max_electric_power if hasattr(self, "max_electric_power") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'power_type={(self.power_type if hasattr(self, "power_type") else None)!s}, '
+                f'voltage={(self.voltage if hasattr(self, "voltage") else None)!s}, '
+                f'amperage={(self.amperage if hasattr(self, "amperage") else None)!s}, '
+                f'max_electric_power={(self.max_electric_power if hasattr(self, "max_electric_power") else None)!s})')

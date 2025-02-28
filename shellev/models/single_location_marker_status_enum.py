@@ -16,10 +16,10 @@ class SingleLocationMarkerStatusEnum(object):
     the Marker is available, the value will be available
 
     Attributes:
-        AVAILABLE: TODO: type description here.
-        OCCUPIED: TODO: type description here.
-        UNAVAILABLE: TODO: type description here.
-        UNKNOWN: TODO: type description here.
+        AVAILABLE: The enum member of type str.
+        OCCUPIED: The enum member of type str.
+        UNAVAILABLE: The enum member of type str.
+        UNKNOWN: The enum member of type str.
 
     """
     _all_values = ['Available', 'Occupied', 'Unavailable', 'Unknown']

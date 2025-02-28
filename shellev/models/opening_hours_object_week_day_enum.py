@@ -15,13 +15,13 @@ class OpeningHoursObjectWeekDayEnum(object):
     3 letter day of the week
 
     Attributes:
-        SUN: TODO: type description here.
-        MON: TODO: type description here.
-        TUE: TODO: type description here.
-        WED: TODO: type description here.
-        THU: TODO: type description here.
-        FRI: TODO: type description here.
-        SAT: TODO: type description here.
+        SUN: The enum member of type str.
+        MON: The enum member of type str.
+        TUE: The enum member of type str.
+        WED: The enum member of type str.
+        THU: The enum member of type str.
+        FRI: The enum member of type str.
+        SAT: The enum member of type str.
 
     """
     SUN = 'Sun'

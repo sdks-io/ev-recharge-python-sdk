@@ -15,8 +15,8 @@ class ActiveResponse200JsonStatusEnum(object):
     Indicates overall status of the request
 
     Attributes:
-        SUCCESS: TODO: type description here.
-        FAILED: TODO: type description here.
+        SUCCESS: The enum member of type str.
+        FAILED: The enum member of type str.
 
     """
     SUCCESS = 'SUCCESS'

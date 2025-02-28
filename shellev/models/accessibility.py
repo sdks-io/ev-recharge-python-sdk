@@ -68,3 +68,13 @@ class Accessibility(object):
         # Return an object of this model
         return cls(status,
                    remark)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'status={(self.status if hasattr(self, "status") else None)!r}, '
+                f'remark={(self.remark if hasattr(self, "remark") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'status={(self.status if hasattr(self, "status") else None)!s}, '
+                f'remark={(self.remark if hasattr(self, "remark") else None)!s})')

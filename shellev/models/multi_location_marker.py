@@ -136,3 +136,23 @@ class MultiLocationMarker(object):
 
         return APIHelper.is_valid_type(value=dictionary.get('markerType'),
                                        type_callable=lambda value: isinstance(value, str))
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'marker_type={self.marker_type!r}, '
+                f'unique_key={(self.unique_key if hasattr(self, "unique_key") else None)!r}, '
+                f'coordinates={(self.coordinates if hasattr(self, "coordinates") else None)!r}, '
+                f'location_count={(self.location_count if hasattr(self, "location_count") else None)!r}, '
+                f'evse_count={(self.evse_count if hasattr(self, "evse_count") else None)!r}, '
+                f'max_power={(self.max_power if hasattr(self, "max_power") else None)!r}, '
+                f'geo_hash={(self.geo_hash if hasattr(self, "geo_hash") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'marker_type={self.marker_type!s}, '
+                f'unique_key={(self.unique_key if hasattr(self, "unique_key") else None)!s}, '
+                f'coordinates={(self.coordinates if hasattr(self, "coordinates") else None)!s}, '
+                f'location_count={(self.location_count if hasattr(self, "location_count") else None)!s}, '
+                f'evse_count={(self.evse_count if hasattr(self, "evse_count") else None)!s}, '
+                f'max_power={(self.max_power if hasattr(self, "max_power") else None)!s}, '
+                f'geo_hash={(self.geo_hash if hasattr(self, "geo_hash") else None)!s})')

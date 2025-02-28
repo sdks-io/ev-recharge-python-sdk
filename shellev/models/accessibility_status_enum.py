@@ -15,10 +15,10 @@ class AccessibilityStatusEnum(object):
     Accessibility Status
 
     Attributes:
-        FREEPUBLIC: TODO: type description here.
-        PAYINGPUBLIC: TODO: type description here.
-        RESTRICTED: TODO: type description here.
-        UNSPECIFIED: TODO: type description here.
+        FREEPUBLIC: The enum member of type str.
+        PAYINGPUBLIC: The enum member of type str.
+        RESTRICTED: The enum member of type str.
+        UNSPECIFIED: The enum member of type str.
 
     """
     FREEPUBLIC = 'FreePublic'

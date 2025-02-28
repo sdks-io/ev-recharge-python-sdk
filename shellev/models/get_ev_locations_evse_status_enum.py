@@ -15,10 +15,10 @@ class GetEVLocationsEvseStatusEnum(object):
     Filter by Locations that have the given status
 
     Attributes:
-        AVAILABLE: TODO: type description here.
-        OCCUPIED: TODO: type description here.
-        UNAVAILABLE: TODO: type description here.
-        UNKNOWN: TODO: type description here.
+        AVAILABLE: The enum member of type str.
+        OCCUPIED: The enum member of type str.
+        UNAVAILABLE: The enum member of type str.
+        UNKNOWN: The enum member of type str.
 
     """
     _all_values = ['Available', 'Occupied', 'Unavailable', 'Unknown']

@@ -20,7 +20,8 @@ class SingleLocationMarker(object):
         marker_type (str): Identifies the marker type. If it’s a
             `SingleLocationMarker`, then the value is `SingleLocation`
         unique_key (str): Uniquely identifies the marker object
-        status (SingleLocationMarkerStatusEnum): TODO: type description here.
+        status (SingleLocationMarkerStatusEnum): The model property of type
+            SingleLocationMarkerStatusEnum.
         coordinates (Coordinates): Coordinates of the Shell Recharge Site
             Location
         evse_count (float): Total number of Evse units in Locations that this
@@ -160,3 +161,29 @@ class SingleLocationMarker(object):
 
         return APIHelper.is_valid_type(value=dictionary.get('markerType'),
                                        type_callable=lambda value: isinstance(value, str))
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'marker_type={self.marker_type!r}, '
+                f'unique_key={(self.unique_key if hasattr(self, "unique_key") else None)!r}, '
+                f'status={(self.status if hasattr(self, "status") else None)!r}, '
+                f'coordinates={(self.coordinates if hasattr(self, "coordinates") else None)!r}, '
+                f'evse_count={(self.evse_count if hasattr(self, "evse_count") else None)!r}, '
+                f'max_power={(self.max_power if hasattr(self, "max_power") else None)!r}, '
+                f'geo_hash={(self.geo_hash if hasattr(self, "geo_hash") else None)!r}, '
+                f'location_uid={(self.location_uid if hasattr(self, "location_uid") else None)!r}, '
+                f'authorization_methods={(self.authorization_methods if hasattr(self, "authorization_methods") else None)!r}, '
+                f'operator_id={(self.operator_id if hasattr(self, "operator_id") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'marker_type={self.marker_type!s}, '
+                f'unique_key={(self.unique_key if hasattr(self, "unique_key") else None)!s}, '
+                f'status={(self.status if hasattr(self, "status") else None)!s}, '
+                f'coordinates={(self.coordinates if hasattr(self, "coordinates") else None)!s}, '
+                f'evse_count={(self.evse_count if hasattr(self, "evse_count") else None)!s}, '
+                f'max_power={(self.max_power if hasattr(self, "max_power") else None)!s}, '
+                f'geo_hash={(self.geo_hash if hasattr(self, "geo_hash") else None)!s}, '
+                f'location_uid={(self.location_uid if hasattr(self, "location_uid") else None)!s}, '
+                f'authorization_methods={(self.authorization_methods if hasattr(self, "authorization_methods") else None)!s}, '
+                f'operator_id={(self.operator_id if hasattr(self, "operator_id") else None)!s})')

@@ -13,8 +13,6 @@ class ChargeError(object):
 
     """Implementation of the 'ChargeError' model.
 
-    TODO: type model description here.
-
     Attributes:
         code (str): Session code e.g InternalError
         message (str): Session message
@@ -67,3 +65,13 @@ class ChargeError(object):
         # Return an object of this model
         return cls(code,
                    message)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'code={(self.code if hasattr(self, "code") else None)!r}, '
+                f'message={(self.message if hasattr(self, "message") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'code={(self.code if hasattr(self, "code") else None)!s}, '
+                f'message={(self.message if hasattr(self, "message") else None)!s})')

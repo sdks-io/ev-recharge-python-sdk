@@ -14,15 +14,14 @@ class GetChargeSessionRetrieveResponse200Json(object):
 
     """Implementation of the 'getChargeSessionRetrieveResponse200Json' model.
 
-    TODO: type model description here.
-
     Attributes:
         request_id (uuid|str): Mandatory UUID (according to RFC 4122
             standards) for requests and responses. This will be played back in
             the response from the request.
-        status (GetChargeSessionRetrieveResponse200JsonStatusEnum): TODO: type
-            description here.
-        data (List[DataRetrieve]): TODO: type description here.
+        status (GetChargeSessionRetrieveResponse200JsonStatusEnum): The model
+            property of type GetChargeSessionRetrieveResponse200JsonStatusEnum.
+        data (List[DataRetrieve]): The model property of type
+            List[DataRetrieve].
 
     """
 
@@ -79,3 +78,15 @@ class GetChargeSessionRetrieveResponse200Json(object):
         return cls(request_id,
                    status,
                    data)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'request_id={self.request_id!r}, '
+                f'status={self.status!r}, '
+                f'data={(self.data if hasattr(self, "data") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'request_id={self.request_id!s}, '
+                f'status={self.status!s}, '
+                f'data={(self.data if hasattr(self, "data") else None)!s})')

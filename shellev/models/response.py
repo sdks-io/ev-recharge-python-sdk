@@ -14,8 +14,6 @@ class Response(object):
 
     """Implementation of the 'Response' model.
 
-    TODO: type model description here.
-
     Attributes:
         request_id (uuid|str): requestId is unique identifier value that is
             attached to requests and messages that allow reference to a
@@ -82,3 +80,15 @@ class Response(object):
         return cls(request_id,
                    status,
                    data)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'request_id={(self.request_id if hasattr(self, "request_id") else None)!r}, '
+                f'status={(self.status if hasattr(self, "status") else None)!r}, '
+                f'data={(self.data if hasattr(self, "data") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'request_id={(self.request_id if hasattr(self, "request_id") else None)!s}, '
+                f'status={(self.status if hasattr(self, "status") else None)!s}, '
+                f'data={(self.data if hasattr(self, "data") else None)!s})')

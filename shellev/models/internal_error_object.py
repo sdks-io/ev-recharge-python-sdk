@@ -13,8 +13,6 @@ class InternalErrorObject(object):
 
     """Implementation of the 'InternalErrorObject' model.
 
-    TODO: type model description here.
-
     Attributes:
         code (str): Error code
         message (str): Error description in English
@@ -77,3 +75,15 @@ class InternalErrorObject(object):
         return cls(code,
                    message,
                    description)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'code={(self.code if hasattr(self, "code") else None)!r}, '
+                f'message={(self.message if hasattr(self, "message") else None)!r}, '
+                f'description={(self.description if hasattr(self, "description") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'code={(self.code if hasattr(self, "code") else None)!s}, '
+                f'message={(self.message if hasattr(self, "message") else None)!s}, '
+                f'description={(self.description if hasattr(self, "description") else None)!s})')

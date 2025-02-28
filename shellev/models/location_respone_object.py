@@ -18,8 +18,6 @@ class LocationResponeObject(object):
 
     """Implementation of the 'LocationResponeObject' model.
 
-    TODO: type model description here.
-
     Attributes:
         uid (int): Unique Internal identifier used to refer to this Location
             by Shell Recharge
@@ -30,7 +28,7 @@ class LocationResponeObject(object):
         operator_name (str): Operator of this Shell Recharge Location
         address (Address): Address of the Shell Recharge Location
         accessibility (Accessibility): Accessibility of the Location
-        evses (List[EvseVO]): TODO: type description here.
+        evses (List[EvseVO]): The model property of type List[EvseVO].
         opening_hours (List[OpeningHoursObject]): Optional Opening Hours of
             the Location. Please note that it is not available for all sites.
         updated (str): ISO8601-compliant UTC datetime of the last update of
@@ -158,3 +156,31 @@ class LocationResponeObject(object):
                    updated,
                    operator_comment,
                    location_type)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'uid={(self.uid if hasattr(self, "uid") else None)!r}, '
+                f'external_id={(self.external_id if hasattr(self, "external_id") else None)!r}, '
+                f'coordinates={(self.coordinates if hasattr(self, "coordinates") else None)!r}, '
+                f'operator_name={(self.operator_name if hasattr(self, "operator_name") else None)!r}, '
+                f'address={(self.address if hasattr(self, "address") else None)!r}, '
+                f'accessibility={(self.accessibility if hasattr(self, "accessibility") else None)!r}, '
+                f'evses={(self.evses if hasattr(self, "evses") else None)!r}, '
+                f'opening_hours={(self.opening_hours if hasattr(self, "opening_hours") else None)!r}, '
+                f'updated={(self.updated if hasattr(self, "updated") else None)!r}, '
+                f'operator_comment={(self.operator_comment if hasattr(self, "operator_comment") else None)!r}, '
+                f'location_type={(self.location_type if hasattr(self, "location_type") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'uid={(self.uid if hasattr(self, "uid") else None)!s}, '
+                f'external_id={(self.external_id if hasattr(self, "external_id") else None)!s}, '
+                f'coordinates={(self.coordinates if hasattr(self, "coordinates") else None)!s}, '
+                f'operator_name={(self.operator_name if hasattr(self, "operator_name") else None)!s}, '
+                f'address={(self.address if hasattr(self, "address") else None)!s}, '
+                f'accessibility={(self.accessibility if hasattr(self, "accessibility") else None)!s}, '
+                f'evses={(self.evses if hasattr(self, "evses") else None)!s}, '
+                f'opening_hours={(self.opening_hours if hasattr(self, "opening_hours") else None)!s}, '
+                f'updated={(self.updated if hasattr(self, "updated") else None)!s}, '
+                f'operator_comment={(self.operator_comment if hasattr(self, "operator_comment") else None)!s}, '
+                f'location_type={(self.location_type if hasattr(self, "location_type") else None)!s})')

@@ -22,16 +22,17 @@ class ConnectorVO(object):
         uid (int): Internal identifier used to refer to this Connector
         external_id (str): Identifier of the Evse as given by the Operator,
             unique for the containing EVSE'
-        connector_type (ConnectorVOConnectorTypeEnum): TODO: type description
-            here.
+        connector_type (ConnectorVOConnectorTypeEnum): The model property of
+            type ConnectorVOConnectorTypeEnum.
         electrical_properties (ElectricalProperties): Electrical Properties of
             the Connector
         fixed_cable (bool): Indicates whether Connector has a fixed cable
             attached. False by default (not sent in this case)
-        tariff (Tariff): TODO: type description here.
+        tariff (Tariff): The model property of type Tariff.
         updated (str): ISO8601-compliant UTC datetime of the last update of
             the Connector’s data
-        updated_by (ConnectorVOUpdatedByEnum): TODO: type description here.
+        updated_by (ConnectorVOUpdatedByEnum): The model property of type
+            ConnectorVOUpdatedByEnum.
         deleted (str): optional  ISO8601-compliant UTC deletion timestamp of
             the connector
 
@@ -132,3 +133,27 @@ class ConnectorVO(object):
                    updated,
                    updated_by,
                    deleted)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'uid={(self.uid if hasattr(self, "uid") else None)!r}, '
+                f'external_id={(self.external_id if hasattr(self, "external_id") else None)!r}, '
+                f'connector_type={(self.connector_type if hasattr(self, "connector_type") else None)!r}, '
+                f'electrical_properties={(self.electrical_properties if hasattr(self, "electrical_properties") else None)!r}, '
+                f'fixed_cable={(self.fixed_cable if hasattr(self, "fixed_cable") else None)!r}, '
+                f'tariff={(self.tariff if hasattr(self, "tariff") else None)!r}, '
+                f'updated={(self.updated if hasattr(self, "updated") else None)!r}, '
+                f'updated_by={(self.updated_by if hasattr(self, "updated_by") else None)!r}, '
+                f'deleted={(self.deleted if hasattr(self, "deleted") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'uid={(self.uid if hasattr(self, "uid") else None)!s}, '
+                f'external_id={(self.external_id if hasattr(self, "external_id") else None)!s}, '
+                f'connector_type={(self.connector_type if hasattr(self, "connector_type") else None)!s}, '
+                f'electrical_properties={(self.electrical_properties if hasattr(self, "electrical_properties") else None)!s}, '
+                f'fixed_cable={(self.fixed_cable if hasattr(self, "fixed_cable") else None)!s}, '
+                f'tariff={(self.tariff if hasattr(self, "tariff") else None)!s}, '
+                f'updated={(self.updated if hasattr(self, "updated") else None)!s}, '
+                f'updated_by={(self.updated_by if hasattr(self, "updated_by") else None)!s}, '
+                f'deleted={(self.deleted if hasattr(self, "deleted") else None)!s})')

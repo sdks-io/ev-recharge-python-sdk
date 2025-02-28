@@ -15,9 +15,9 @@ class ElectricalPropertiesPowerTypeEnum(object):
     Power Type used in this connector.
 
     Attributes:
-        AC1PHASE: TODO: type description here.
-        AC3PHASE: TODO: type description here.
-        DC: TODO: type description here.
+        AC1PHASE: The enum member of type str.
+        AC3PHASE: The enum member of type str.
+        DC: The enum member of type str.
 
     """
     AC1PHASE = 'AC1Phase'

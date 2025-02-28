@@ -14,15 +14,13 @@ class ActiveResponse200Json(object):
 
     """Implementation of the 'activeResponse200Json' model.
 
-    TODO: type model description here.
-
     Attributes:
         request_id (uuid|str): Mandatory UUID (according to RFC 4122
             standards) for requests and responses. This will be played back in
             the response from the request.
-        status (GetChargeSessionRetrieveResponse200JsonStatusEnum): TODO: type
-            description here.
-        data (List[DataActive]): TODO: type description here.
+        status (GetChargeSessionRetrieveResponse200JsonStatusEnum): The model
+            property of type GetChargeSessionRetrieveResponse200JsonStatusEnum.
+        data (List[DataActive]): The model property of type List[DataActive].
 
     """
 
@@ -79,3 +77,15 @@ class ActiveResponse200Json(object):
         return cls(request_id,
                    status,
                    data)
+
+    def __repr__(self):
+        return (f'{self.__class__.__name__}('
+                f'request_id={self.request_id!r}, '
+                f'status={self.status!r}, '
+                f'data={(self.data if hasattr(self, "data") else None)!r})')
+
+    def __str__(self):
+        return (f'{self.__class__.__name__}('
+                f'request_id={self.request_id!s}, '
+                f'status={self.status!s}, '
+                f'data={(self.data if hasattr(self, "data") else None)!s})')
