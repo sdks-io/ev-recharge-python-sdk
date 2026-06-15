@@ -11,8 +11,8 @@ Coordinates of the Shell Recharge Site Location
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `latitude` | `float` | Optional | Latitude of the Coordinate<br>**Constraints**: `>= -90`, `<= 90` |
-| `longitude` | `float` | Optional | Longitude of the Coordinate<br>**Constraints**: `>= -180`, `<= 180` |
+| `latitude` | `float` | Optional | Latitude of the Coordinate<br><br>**Constraints**: `>= -90`, `<= 90` |
+| `longitude` | `float` | Optional | Longitude of the Coordinate<br><br>**Constraints**: `>= -180`, `<= 180` |
 
 ## Example (as JSON)
 

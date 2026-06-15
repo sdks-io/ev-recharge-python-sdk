@@ -29,11 +29,11 @@ The package is compatible with Python versions `3.7+`.
 Install the package from PyPi using the following pip command:
 
 ```bash
-pip install ev-recharge-sdk==1.4.0
+pip install ev-recharge-sdk==2.0.0
 ```
 
 You can also view the package at:
-https://pypi.python.org/pypi/ev-recharge-sdk/1.4.0
+https://pypi.python.org/pypi/ev-recharge-sdk/2.0.0
 
 ## Test the SDK
 
@@ -41,33 +41,40 @@ You can test the generated SDK and the server with test cases. `unittest` is use
 
 Navigate to the root directory of the SDK and run the following commands
 
-```
+
 pip install -r test-requirements.txt
 pytest
-```
+
 
 ## Initialize the API Client
 
-**_Note:_** Documentation for the client can be found [here.](https://www.github.com/sdks-io/ev-recharge-python-sdk/tree/1.4.0/doc/client.md)
+**_Note:_** Documentation for the client can be found [here.](https://www.github.com/sdks-io/ev-recharge-python-sdk/tree/2.0.0/doc/client.md)
 
 The following parameters are configurable for the API Client:
 
 | Parameter | Type | Description |
 |  --- | --- | --- |
-| `environment` | `Environment` | The API environment. <br> **Default: `Environment.PRODUCTION`** |
-| `http_client_instance` | `HttpClient` | The Http Client passed from the sdk user for making requests |
-| `override_http_client_configuration` | `bool` | The value which determines to override properties of the passed Http Client from the sdk user |
-| `http_call_back` | `HttpCallBack` | The callback value that is invoked before and after an HTTP call is made to an endpoint |
-| `timeout` | `float` | The value to use for connection timeout. <br> **Default: 60** |
-| `max_retries` | `int` | The number of times to retry an endpoint call if it fails. <br> **Default: 0** |
-| `backoff_factor` | `float` | A backoff factor to apply between attempts after the second try. <br> **Default: 2** |
-| `retry_statuses` | `Array of int` | The http statuses on which retry is to be done. <br> **Default: [408, 413, 429, 500, 502, 503, 504, 521, 522, 524]** |
-| `retry_methods` | `Array of string` | The http methods on which retry is to be done. <br> **Default: ['GET', 'PUT']** |
-| `client_credentials_auth_credentials` | [`ClientCredentialsAuthCredentials`](https://www.github.com/sdks-io/ev-recharge-python-sdk/tree/1.4.0/doc/auth/oauth-2-client-credentials-grant.md) | The credential object for OAuth 2 Client Credentials Grant |
+| environment | [`Environment`](https://www.github.com/sdks-io/ev-recharge-python-sdk/tree/2.0.0/README.md#environments) | The API environment. <br> **Default: `Environment.PRODUCTION`** |
+| http_client_instance | `Union[Session, HttpClientProvider]` | The Http Client passed from the sdk user for making requests |
+| override_http_client_configuration | `bool` | The value which determines to override properties of the passed Http Client from the sdk user |
+| http_call_back | `HttpCallBack` | The callback value that is invoked before and after an HTTP call is made to an endpoint |
+| timeout | `float` | The value to use for connection timeout. <br> **Default: 60** |
+| max_retries | `int` | The number of times to retry an endpoint call if it fails. <br> **Default: 0** |
+| backoff_factor | `float` | A backoff factor to apply between attempts after the second try. <br> **Default: 2** |
+| retry_statuses | `Array of int` | The http statuses on which retry is to be done. <br> **Default: [408, 413, 429, 500, 502, 503, 504, 521, 522, 524]** |
+| retry_methods | `Array of string` | The http methods on which retry is to be done. <br> **Default: ["GET", "PUT"]** |
+| proxy_settings | [`ProxySettings`](https://www.github.com/sdks-io/ev-recharge-python-sdk/tree/2.0.0/doc/proxy-settings.md) | Optional proxy configuration to route HTTP requests through a proxy server. |
+| client_credentials_auth_credentials | [`ClientCredentialsAuthCredentials`](https://www.github.com/sdks-io/ev-recharge-python-sdk/tree/2.0.0/doc/auth/oauth-2-client-credentials-grant.md) | The credential object for OAuth 2 Client Credentials Grant |
 
 The API client can be initialized as follows:
 
+### Code-Based Client Initialization
+
 ```python
+from shellev.configuration import Environment
+from shellev.http.auth.o_auth_2 import ClientCredentialsAuthCredentials
+from shellev.shellev_client import ShellevClient
+
 client = ShellevClient(
     client_credentials_auth_credentials=ClientCredentialsAuthCredentials(
         o_auth_client_id='OAuthClientId',
@@ -77,6 +84,17 @@ client = ShellevClient(
 )
 ```
 
+### Environment-Based Client Initialization
+
+```python
+from shellev.shellev_client import ShellevClient
+
+# Specify the path to your .env file if it’s located outside the project’s root directory.
+client = ShellevClient.from_environment(dotenv_path='/path/to/.env')
+```
+
+See the [Environment-Based Client Initialization](https://www.github.com/sdks-io/ev-recharge-python-sdk/tree/2.0.0/doc/environment-based-client-initialization.md) section for details.
+
 ## Environments
 
 The SDK can be configured to use a different environment for making API calls. Available environments are:
@@ -85,23 +103,38 @@ The SDK can be configured to use a different environment for making API calls. A
 
 | Name | Description |
 |  --- | --- |
-| production | **Default** Production Server |
-| environment2 | Test Server |
+| PRODUCTION | **Default** Production Server |
+| ENVIRONMENT2 | Production Server |
+| ENVIRONMENT3 | Test Server |
+| ENVIRONMENT4 | Test Server |
 
 ## Authorization
 
 This API uses the following authentication schemes.
 
-* [`BearerAuth (OAuth 2 Client Credentials Grant)`](https://www.github.com/sdks-io/ev-recharge-python-sdk/tree/1.4.0/doc/auth/oauth-2-client-credentials-grant.md)
+* [`BearerAuth (OAuth 2 Client Credentials Grant)`](https://www.github.com/sdks-io/ev-recharge-python-sdk/tree/2.0.0/doc/auth/oauth-2-client-credentials-grant.md)
 
 ## List of APIs
 
-* [Locations](https://www.github.com/sdks-io/ev-recharge-python-sdk/tree/1.4.0/doc/controllers/locations.md)
-* [Charging](https://www.github.com/sdks-io/ev-recharge-python-sdk/tree/1.4.0/doc/controllers/charging.md)
+* [Locations](https://www.github.com/sdks-io/ev-recharge-python-sdk/tree/2.0.0/doc/controllers/locations.md)
+* [Charging](https://www.github.com/sdks-io/ev-recharge-python-sdk/tree/2.0.0/doc/controllers/charging.md)
 
-## Classes Documentation
+## SDK Infrastructure
 
-* [Utility Classes](https://www.github.com/sdks-io/ev-recharge-python-sdk/tree/1.4.0/doc/utility-classes.md)
-* [HttpResponse](https://www.github.com/sdks-io/ev-recharge-python-sdk/tree/1.4.0/doc/http-response.md)
-* [HttpRequest](https://www.github.com/sdks-io/ev-recharge-python-sdk/tree/1.4.0/doc/http-request.md)
+### Configuration
+
+* [ProxySettings](https://www.github.com/sdks-io/ev-recharge-python-sdk/tree/2.0.0/doc/proxy-settings.md)
+* [Environment-Based Client Initialization](https://www.github.com/sdks-io/ev-recharge-python-sdk/tree/2.0.0/doc/environment-based-client-initialization.md)
+
+### HTTP
+
+* [HttpResponse](https://www.github.com/sdks-io/ev-recharge-python-sdk/tree/2.0.0/doc/http-response.md)
+* [HttpRequest](https://www.github.com/sdks-io/ev-recharge-python-sdk/tree/2.0.0/doc/http-request.md)
+
+### Utilities
+
+* [ApiHelper](https://www.github.com/sdks-io/ev-recharge-python-sdk/tree/2.0.0/doc/api-helper.md)
+* [HttpDateTime](https://www.github.com/sdks-io/ev-recharge-python-sdk/tree/2.0.0/doc/http-date-time.md)
+* [RFC3339DateTime](https://www.github.com/sdks-io/ev-recharge-python-sdk/tree/2.0.0/doc/rfc3339-date-time.md)
+* [UnixDateTime](https://www.github.com/sdks-io/ev-recharge-python-sdk/tree/2.0.0/doc/unix-date-time.md)
 

@@ -27,6 +27,9 @@ Documentation for accessing and setting credentials for BearerAuth.
 You must initialize the client with *OAuth 2.0 Client Credentials Grant* credentials as shown in the following code snippet. This will fetch the OAuth token automatically when any of the endpoints, requiring *OAuth 2.0 Client Credentials Grant* authentication, are called.
 
 ```python
+from shellev.http.auth.o_auth_2 import ClientCredentialsAuthCredentials
+from shellev.shellev_client import ShellevClient
+
 client = ShellevClient(
     client_credentials_auth_credentials=ClientCredentialsAuthCredentials(
         o_auth_client_id='OAuthClientId',
@@ -44,6 +47,9 @@ Your application can also manually provide an OAuthToken using the setter `o_aut
 Whenever the OAuth Token gets updated, the provided callback implementation will be executed. For instance, you may use it to store your access token whenever it gets updated.
 
 ```python
+from shellev.http.auth.o_auth_2 import ClientCredentialsAuthCredentials
+from shellev.shellev_client import ShellevClient
+
 client = ShellevClient(
     client_credentials_auth_credentials=ClientCredentialsAuthCredentials(
         o_auth_client_id='OAuthClientId',
@@ -61,6 +67,9 @@ client = ShellevClient(
 To authorize a client using a stored access token, set up the `o_auth_token_provider` in `ClientCredentialsAuthCredentials` along with the other auth parameters before creating the client:
 
 ```python
+from shellev.http.auth.o_auth_2 import ClientCredentialsAuthCredentials
+from shellev.shellev_client import ShellevClient
+
 def _o_auth_token_provider(last_oauth_token, auth_manager):
     # Add the callback handler to provide a new OAuth token
     # It will be triggered whenever the last provided o_auth_token is null or expired
