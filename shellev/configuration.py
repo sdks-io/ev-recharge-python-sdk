@@ -24,12 +24,8 @@ class Environment(Enum):
 
     # Production Server
     PRODUCTION = 0
-    # Production Server
+    # Test Server
     ENVIRONMENT2 = 1
-    # Test Server
-    ENVIRONMENT3 = 2
-    # Test Server
-    ENVIRONMENT4 = 3
 
     @classmethod
     def from_value(cls, value, default=None):
@@ -64,6 +60,7 @@ class Server(Enum):
     """An enum for API servers."""
 
     DEFAULT = 0
+    ACCESS_TOKEN_SERVER = 1
 
     @classmethod
     def from_value(cls, value, default=None):
@@ -207,15 +204,11 @@ class Configuration(HttpClientConfiguration):
     environments = {
         Environment.PRODUCTION: {
             Server.DEFAULT: "https://api.shell.com/ev",
+            Server.ACCESS_TOKEN_SERVER: "https://api.shell.com/v2/oauth",
         },
         Environment.ENVIRONMENT2: {
-            Server.DEFAULT: "https://api.shell.com/v2/oauth",
-        },
-        Environment.ENVIRONMENT3: {
             Server.DEFAULT: "https://api-test.shell.com/ev",
-        },
-        Environment.ENVIRONMENT4: {
-            Server.DEFAULT: "https://api-test.shell.com/v2/oauth",
+            Server.ACCESS_TOKEN_SERVER: "https://api.shell.com/v2/oauth",
         },
     }
 

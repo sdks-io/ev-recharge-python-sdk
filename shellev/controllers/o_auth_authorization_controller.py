@@ -51,7 +51,7 @@ class OAuthAuthorizationController(BaseController):
 
         """
         return super().new_api_call_builder.request(
-            RequestBuilder().server(Server.DEFAULT)
+            RequestBuilder().server(Server.ACCESS_TOKEN_SERVER)
             .path("/token")
             .http_method(HttpMethodEnum.POST)
             .form_param(Parameter()
