@@ -27,51 +27,62 @@ Tariff metadata aligned with TariffV2 GraphQL schema
 | `last_updated` | `datetime` | Required | - |
 | `created_by` | `str` | Required | Identifier of the actor who created the tariff |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "tariffId": "123e4567-e89b-12d3-a456-426614174000",
-  "tariffType": "DRIVER",
-  "powerRange": {
-    "min": 0,
-    "max": 100
-  },
-  "internalId": "123e4567-e89b-12d3-a456-426614174000",
-  "operatorId": "AT-HTB",
-  "providerId": "Shell_RP_2",
-  "currency": "EUR",
-  "tariffAltText": [
-    {
-      "language": "en",
-      "text": "€0.30 per kWh"
-    }
-  ],
-  "minPrice": 0.3,
-  "maxPrice": 999.0,
-  "elements": [
-    {
-      "priceComponents": [
-        {
-          "type": "FLAT",
-          "stepSize": 1,
-          "price": 0.3,
-          "vat": 21.0
-        }
-      ],
-      "restrictions": {
-        "startTime": "startTime0",
-        "endTime": "endTime2",
-        "startDate": "2016-03-13",
-        "endDate": "2016-03-13",
-        "minKwh": 247.22
-      }
-    }
-  ],
-  "startDateTime": "10/06/2021 10:44:24",
-  "endDateTime": "10/06/2021 10:44:24",
-  "lastUpdated": "10/06/2021 10:44:24",
-  "createdBy": "STAGE_API"
-}
+```python
+import dateutil.parser
+
+from shellev.models.power_range import PowerRange
+from shellev.models.price_component import PriceComponent
+from shellev.models.restrictions import Restrictions
+from shellev.models.tariff_alt_text import TariffAltText
+from shellev.models.tariff_element import TariffElement
+from shellev.models.tariff_type_enum import TariffTypeEnum
+from shellev.models.tariff_v_2 import TariffV2
+from shellev.models.type_enum import TypeEnum
+
+tariff_v_2 = TariffV2(
+    tariff_id='123e4567-e89b-12d3-a456-426614174000',
+    tariff_type=TariffTypeEnum.REIMBURSEMENT,
+    power_range=PowerRange(
+        min=0,
+        max=100
+    ),
+    internal_id='123e4567-e89b-12d3-a456-426614174000',
+    operator_id='AT-HTB',
+    provider_id='Shell_RP_2',
+    currency='EUR',
+    tariff_alt_text=[
+        TariffAltText(
+            language='en',
+            text='€0.30 per kWh'
+        )
+    ],
+    min_price=0.3,
+    max_price=999,
+    elements=[
+        TariffElement(
+            price_components=[
+                PriceComponent(
+                    mtype=TypeEnum.FLAT,
+                    step_size=1,
+                    price=0.3,
+                    vat=21
+                )
+            ],
+            restrictions=Restrictions(
+                start_time='startTime0',
+                end_time='endTime2',
+                start_date=dateutil.parser.parse('2016-03-13').date(),
+                end_date=dateutil.parser.parse('2016-03-13').date(),
+                min_kwh=247.22
+            )
+        )
+    ],
+    start_date_time=dateutil.parser.parse('2021-10-06T10:44:24Z'),
+    end_date_time=dateutil.parser.parse('2021-10-06T10:44:24Z'),
+    last_updated=dateutil.parser.parse('2021-10-06T10:44:24Z'),
+    created_by='STAGE_API'
+)
 ```
 

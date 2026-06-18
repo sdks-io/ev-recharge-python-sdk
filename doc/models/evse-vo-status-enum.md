@@ -18,7 +18,9 @@ The current status of the EVSE units availability
 
 ## Example
 
-```
-Available
+```python
+from shellev.models.evse_vo_status_enum import EvseVOStatusEnum
+
+evse_vo_status = EvseVOStatusEnum.AVAILABLE
 ```
 

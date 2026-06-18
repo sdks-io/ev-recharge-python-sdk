@@ -12,12 +12,14 @@
 | `code` | `str` | Optional | Session code e.g InternalError |
 | `message` | `str` | Optional | Session message |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "code": "code8",
-  "message": "message0"
-}
+```python
+from shellev.models.charge_error import ChargeError
+
+charge_error = ChargeError(
+    code='code8',
+    message='message0'
+)
 ```
 

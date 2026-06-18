@@ -22,22 +22,26 @@ A Marker is a place on the map that represent a single Location
 | `authorization_methods` | [`List[SingleLocationMarkerAuthorizationMethodsItemsEnum]`](../../doc/models/single-location-marker-authorization-methods-items-enum.md) | Optional | Methods that can be used to Authorize sessions on this EVSE |
 | `operator_id` | `str` | Optional | Unique Id of the operator |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "markerType": "SingleLocation",
-  "uniqueKey": "2057411_1",
-  "status": "Available",
-  "evseCount": 12.0,
-  "maxPower": 42.0,
-  "geoHash": "sx",
-  "locationUid": 2057411,
-  "operatorId": "AT-HTB",
-  "coordinates": {
-    "latitude": 39.14,
-    "longitude": 36.94
-  }
-}
+```python
+from shellev.models.coordinates_1 import Coordinates1
+from shellev.models.single_location_marker import SingleLocationMarker
+from shellev.models.single_location_marker_status_enum import SingleLocationMarkerStatusEnum
+
+single_location_marker = SingleLocationMarker(
+    marker_type='SingleLocation',
+    unique_key='2057411_1',
+    status=SingleLocationMarkerStatusEnum.AVAILABLE,
+    coordinates=Coordinates1(
+        latitude=39.14,
+        longitude=36.94
+    ),
+    evse_count=12,
+    max_power=42,
+    geo_hash='sx',
+    location_uid=2057411,
+    operator_id='AT-HTB'
+)
 ```
 

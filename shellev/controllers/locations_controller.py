@@ -128,7 +128,7 @@ class LocationsController(BaseController):
 
         """
         return super().new_api_call_builder.request(
-            RequestBuilder().server(Server.DEFAULT)
+            RequestBuilder().server(Server.SHELL)
             .path("/v2/locations")
             .http_method(HttpMethodEnum.GET)
             .header_param(Parameter()
@@ -233,7 +233,7 @@ class LocationsController(BaseController):
 
         """
         return super().new_api_call_builder.request(
-            RequestBuilder().server(Server.DEFAULT)
+            RequestBuilder().server(Server.SHELL)
             .path("/v2/locations/{id}")
             .http_method(HttpMethodEnum.GET)
             .header_param(Parameter()
@@ -356,7 +356,7 @@ class LocationsController(BaseController):
 
         """
         return super().new_api_call_builder.request(
-            RequestBuilder().server(Server.DEFAULT)
+            RequestBuilder().server(Server.SHELL)
             .path("/v2/locations/nearby")
             .http_method(HttpMethodEnum.GET)
             .header_param(Parameter()
@@ -518,7 +518,7 @@ class LocationsController(BaseController):
 
         """
         return super().new_api_call_builder.request(
-            RequestBuilder().server(Server.DEFAULT)
+            RequestBuilder().server(Server.SHELL)
             .path("/v2/locations/markers")
             .http_method(HttpMethodEnum.GET)
             .header_param(Parameter()

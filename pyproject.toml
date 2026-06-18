@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "ev-recharge-sdk"
 description = "This API Product provides the option to manage charging at all public Shell Recharge locations. The end points provides control to start, stop and get status of the charging session."
-version = "2.1.0"
+version = "2.2.0"
 readme = "README.md"
 keywords = ["EV", "Charging", "Shell", "APIMatic", "SDK", "APIs", "Recharge", "locations"]
 dependencies = ["apimatic-core~=0.2.0, >= 0.2.24", "apimatic-core-interfaces~=0.1.0, >= 0.1.8", "apimatic-requests-client-adapter~=0.1.0, >= 0.1.10", "python-dotenv>=0.21, <2.0"]

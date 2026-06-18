@@ -16,3 +16,11 @@ Filter by Locations that have the given status
 | `UNAVAILABLE` |
 | `UNKNOWN` |
 
+## Example
+
+```python
+from shellev.models.locations_markers_evse_status_enum import LocationsMarkersEvseStatusEnum
+
+locations_markers_evse_status = LocationsMarkersEvseStatusEnum.AVAILABLE
+```
+

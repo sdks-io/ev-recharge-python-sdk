@@ -17,7 +17,9 @@ Power Type used in this connector.
 
 ## Example
 
-```
-AC1Phase
+```python
+from shellev.models.electrical_properties_power_type_enum import ElectricalPropertiesPowerTypeEnum
+
+electrical_properties_power_type = ElectricalPropertiesPowerTypeEnum.DC
 ```
 

@@ -16,14 +16,16 @@ Address of the Shell Recharge Location
 | `city` | `str` | Optional | City name of the Shell Recharge Location |
 | `country` | `str` | Optional | ISO 3166 Alpha-2 Country Code of the Shell Recharge Location |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "streetAndNumber": "Maarssenbroeksedijk 33",
-  "postalCode": "3542 DM",
-  "city": "Utrecht",
-  "country": "NLD"
-}
+```python
+from shellev.models.address import Address
+
+address = Address(
+    street_and_number='Maarssenbroeksedijk 33',
+    postal_code='3542 DM',
+    city='Utrecht',
+    country='NLD'
+)
 ```
 

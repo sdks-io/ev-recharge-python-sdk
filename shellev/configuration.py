@@ -22,10 +22,8 @@ from shellev.http.proxy_settings import ProxySettings
 class Environment(Enum):
     """An enum for SDK environments."""
 
-    # Production Server
-    PRODUCTION = 0
-    # Test Server
-    ENVIRONMENT2 = 1
+    SIT = 0
+    PRODUCTION = 1
 
     @classmethod
     def from_value(cls, value, default=None):
@@ -59,8 +57,8 @@ class Environment(Enum):
 class Server(Enum):
     """An enum for API servers."""
 
-    DEFAULT = 0
-    ACCESS_TOKEN_SERVER = 1
+    OAUTH_SERVER = 0
+    SHELL = 1
 
     @classmethod
     def from_value(cls, value, default=None):
@@ -122,9 +120,8 @@ class Configuration(HttpClientConfiguration):
     def __init__(self, http_client_instance=None,
                  override_http_client_configuration=False, http_call_back=None,
                  timeout=60, max_retries=0, backoff_factor=2, retry_statuses=None,
-                 retry_methods=None, proxy_settings=None,
-                 environment=Environment.PRODUCTION, o_auth_client_id=None,
-                 o_auth_client_secret=None, o_auth_token=None,
+                 retry_methods=None, proxy_settings=None, environment=Environment.SIT,
+                 o_auth_client_id=None, o_auth_client_secret=None, o_auth_token=None,
                  client_credentials_auth_credentials=None):
         """Initialize Configuration object."""
         if retry_methods is None:
@@ -202,17 +199,17 @@ class Configuration(HttpClientConfiguration):
 
     # All the environments the SDK can run in
     environments = {
-        Environment.PRODUCTION: {
-            Server.DEFAULT: "https://api.shell.com/ev",
-            Server.ACCESS_TOKEN_SERVER: "https://api.shell.com/v2/oauth",
+        Environment.SIT: {
+            Server.OAUTH_SERVER: "https://api-test.shell.com",
+            Server.SHELL: "https://api-test.shell.com/ev",
         },
-        Environment.ENVIRONMENT2: {
-            Server.DEFAULT: "https://api-test.shell.com/ev",
-            Server.ACCESS_TOKEN_SERVER: "https://api.shell.com/v2/oauth",
+        Environment.PRODUCTION: {
+            Server.OAUTH_SERVER: "https://api.shell.com",
+            Server.SHELL: "https://api.shell.com/ev",
         },
     }
 
-    def get_base_uri(self, server=Server.DEFAULT):
+    def get_base_uri(self, server=Server.SHELL):
         """Generate the appropriate base URI for the environment and the server.
 
         Args:
@@ -281,7 +278,7 @@ class Configuration(HttpClientConfiguration):
         retry_methods = [v.strip() for v in methods.split(",") if v.strip()]\
             if methods else None
         environment = Environment.from_value(
-            os.getenv("ENVIRONMENT"), Environment.PRODUCTION)
+            os.getenv("ENVIRONMENT"), Environment.SIT)
 
         from shellev.http.auth.o_auth_2 import ClientCredentialsAuthCredentials
 

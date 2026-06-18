@@ -17,17 +17,20 @@
 | `updated_by` | [`TariffVOUpdatedByEnum`](../../doc/models/tariff-vo-updated-by-enum.md) | Optional | Source of the last update of the tariff details |
 | `structure` | `str` | Optional | Tariff structure that this tariff belongs to, typically Default unless specific tariff is defined for provider |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "startFee": 0.0,
-  "perMinute": 0.12,
-  "perKWh": 0.89,
-  "currency": "EUR",
-  "updated": "07/06/2021 10:44:24",
-  "updatedBy": "TariffService",
-  "structure": "default"
-}
+```python
+from shellev.models.tariff import Tariff
+from shellev.models.tariff_vo_updated_by_enum import TariffVOUpdatedByEnum
+
+tariff = Tariff(
+    start_fee=0,
+    per_minute=0.12,
+    per_k_wh=0.89,
+    currency='EUR',
+    updated='2021-07-06T10:44:24Z',
+    updated_by=TariffVOUpdatedByEnum.TARIFFSERVICE,
+    structure='default'
+)
 ```
 

@@ -14,17 +14,18 @@
 | `description` | `str` | Optional | Technical details of the error message, the example which is given in the sample payload is one of the scenarios. actual response will vary based on the technical nature |
 | `details` | `List[str]` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "code": "E0003",
-  "message": "Unauthorized",
-  "description": "Invalid Access Token",
-  "details": [
-    "details1",
-    "details2"
-  ]
-}
+```python
+from shellev.models.unauthorized_err_msg import UnauthorizedErrMsg
+
+unauthorized_err_msg = UnauthorizedErrMsg(
+    code='E0003',
+    message='Unauthorized',
+    description='Invalid Access Token',
+    details=[
+        'details1'
+    ]
+)
 ```
 

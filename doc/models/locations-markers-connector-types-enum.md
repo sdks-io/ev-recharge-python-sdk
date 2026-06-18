@@ -30,3 +30,11 @@ Filter by Locations that have Connectors with the set of Connector Types
 | `TESLA` |
 | `UNSPECIFIED` |
 
+## Example
+
+```python
+from shellev.models.locations_markers_connector_types_enum import LocationsMarkersConnectorTypesEnum
+
+locations_markers_connector_types = LocationsMarkersConnectorTypesEnum.TYPE2
+```
+

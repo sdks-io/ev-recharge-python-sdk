@@ -18,16 +18,20 @@
 | `session_state` | [`ChargeRetrieveState`](../../doc/models/charge-retrieve-state.md) | Optional | - |
 | `last_updated` | `str` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "78b5d7a3-bdba-43d7-9851-1c84fcddb782",
-  "userId": "281482b6-2c9a-4fd1-b3ea-1928edb40ef9",
-  "emaId": "NL-TNM-C00122045-K",
-  "evseId": "NL*TNM*E02003451*0",
-  "startedAt": "08/19/2015 11:20:27",
-  "stoppedAt": "08/19/2015 11:20:27"
-}
+```python
+import dateutil.parser
+
+from shellev.models.data_active import DataActive
+
+data_active = DataActive(
+    id='78b5d7a3-bdba-43d7-9851-1c84fcddb782',
+    user_id='281482b6-2c9a-4fd1-b3ea-1928edb40ef9',
+    ema_id='NL-TNM-C00122045-K',
+    evse_id='NL*TNM*E02003451*0',
+    started_at=dateutil.parser.parse('2015-08-19T11:20:27Z'),
+    stopped_at=dateutil.parser.parse('2015-08-19T11:20:27Z')
+)
 ```
 

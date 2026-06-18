@@ -18,7 +18,9 @@ Minimum of all status values in the Marker, e.g. if at least one Evse in the Mar
 
 ## Example
 
-```
-Available
+```python
+from shellev.models.single_location_marker_status_enum import SingleLocationMarkerStatusEnum
+
+single_location_marker_status = SingleLocationMarkerStatusEnum.UNAVAILABLE
 ```
 

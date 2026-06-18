@@ -89,7 +89,7 @@ class ChargingController(BaseController):
 
         """
         return super().new_api_call_builder.request(
-            RequestBuilder().server(Server.DEFAULT)
+            RequestBuilder().server(Server.SHELL)
             .path("/v2/charge-session/start")
             .http_method(HttpMethodEnum.POST)
             .header_param(Parameter()
@@ -156,7 +156,7 @@ class ChargingController(BaseController):
 
         """
         return super().new_api_call_builder.request(
-            RequestBuilder().server(Server.DEFAULT)
+            RequestBuilder().server(Server.SHELL)
             .path("/v2/charge-session/stop")
             .http_method(HttpMethodEnum.POST)
             .header_param(Parameter()
@@ -219,7 +219,7 @@ class ChargingController(BaseController):
 
         """
         return super().new_api_call_builder.request(
-            RequestBuilder().server(Server.DEFAULT)
+            RequestBuilder().server(Server.SHELL)
             .path("/v2/charge-session/retrieve")
             .http_method(HttpMethodEnum.GET)
             .header_param(Parameter()
@@ -282,7 +282,7 @@ class ChargingController(BaseController):
 
         """
         return super().new_api_call_builder.request(
-            RequestBuilder().server(Server.DEFAULT)
+            RequestBuilder().server(Server.SHELL)
             .path("/v2/charge-session/active")
             .http_method(HttpMethodEnum.GET)
             .header_param(Parameter()

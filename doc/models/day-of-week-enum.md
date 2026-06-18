@@ -19,7 +19,9 @@
 
 ## Example
 
-```
-MONDAY
+```python
+from shellev.models.day_of_week_enum import DayOfWeekEnum
+
+day_of_week = DayOfWeekEnum.SUNDAY
 ```
 

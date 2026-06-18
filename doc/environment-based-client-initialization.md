@@ -30,7 +30,7 @@ Values provided through arguments take precedence over those defined in environm
 ## Example `.env` File
 
 ```python
-ENVIRONMENT=production
+ENVIRONMENT=sit
 
 O_AUTH_CLIENT_ID=ExampleOAuthClientId
 O_AUTH_CLIENT_SECRET=ExampleOAuthClientSecret

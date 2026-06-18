@@ -14,3 +14,11 @@
 | `UNAVAILABLE` |
 | `UNKNOWN` |
 
+## Example
+
+```python
+from shellev.models.evse_status_enum import EvseStatusEnum
+
+evse_status = EvseStatusEnum.UNAVAILABLE
+```
+

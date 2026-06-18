@@ -16,7 +16,9 @@ Indicates overall status of the request
 
 ## Example
 
-```
-SUCCESS
+```python
+from shellev.models.get_charge_session_retrieve_response_200_json_status_enum import GetChargeSessionRetrieveResponse200JsonStatusEnum
+
+get_charge_session_retrieve_response_200_json_status = GetChargeSessionRetrieveResponse200JsonStatusEnum.SUCCESS
 ```
 

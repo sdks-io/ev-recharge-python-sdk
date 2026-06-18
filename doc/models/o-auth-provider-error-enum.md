@@ -18,3 +18,11 @@ OAuth 2 Authorization error codes
 | `UNSUPPORTED_GRANT_TYPE` | The authorization grant type is not supported by the authorization server. |
 | `INVALID_SCOPE` | The requested scope is invalid, unknown, malformed, or exceeds the scope granted by the resource owner. |
 
+## Example
+
+```python
+from shellev.models.o_auth_provider_error_enum import OAuthProviderErrorEnum
+
+o_auth_provider_error = OAuthProviderErrorEnum.INVALID_REQUEST
+```
+

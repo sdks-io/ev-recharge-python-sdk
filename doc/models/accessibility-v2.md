@@ -13,11 +13,14 @@ Accessibility of the Location
 |  --- | --- | --- | --- |
 | `status` | [`AccessibilityStatusEnum`](../../doc/models/accessibility-status-enum.md) | Optional | Accessibility Status |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "status": "FreePublic"
-}
+```python
+from shellev.models.accessibility_status_enum import AccessibilityStatusEnum
+from shellev.models.accessibility_v_2 import AccessibilityV2
+
+accessibility_v_2 = AccessibilityV2(
+    status=AccessibilityStatusEnum.FREEPUBLIC
+)
 ```
 

@@ -19,20 +19,23 @@ A Marker is a place on the map that represent multiple Locations at the same spo
 | `max_power` | `float` | Optional | Maximum power in kW across all locations grouped in this marker (disregarding availability) |
 | `geo_hash` | `str` | Optional | GeoHash of marker coordinates |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "markerType": "MultiLocation",
-  "uniqueKey": "2060319_6",
-  "locationCount": 6.0,
-  "evseCount": 10.0,
-  "maxPower": 42.0,
-  "geoHash": "sx",
-  "coordinates": {
-    "latitude": 39.14,
-    "longitude": 36.94
-  }
-}
+```python
+from shellev.models.coordinates_1 import Coordinates1
+from shellev.models.multi_location_marker import MultiLocationMarker
+
+multi_location_marker = MultiLocationMarker(
+    marker_type='MultiLocation',
+    unique_key='2060319_6',
+    coordinates=Coordinates1(
+        latitude=39.14,
+        longitude=36.94
+    ),
+    location_count=6,
+    evse_count=10,
+    max_power=42,
+    geo_hash='sx'
+)
 ```
 

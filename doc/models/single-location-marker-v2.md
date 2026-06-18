@@ -21,21 +21,24 @@ A Marker is a place on the map that represent a single Location
 | `operator_name` | `str` | Optional | Operator of this Shell Recharge Location |
 | `marker_type` | `str` | Required, Constant | Type of the Marker, in this case it will always be SingleLocation<br><br>**Value**: `"SingleLocation"` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "status": "Available",
-  "evseCount": 12.0,
-  "locationCount": 6.0,
-  "locationUid": "2057411",
-  "operatorName": "TheNewMotion",
-  "markerType": "SingleLocation",
-  "coordinates": {
-    "latitude": 39.14,
-    "longitude": 36.94
-  },
-  "maxPower": 45.08
-}
+```python
+from shellev.models.coordinates import Coordinates
+from shellev.models.single_location_marker_status_enum import SingleLocationMarkerStatusEnum
+from shellev.models.single_location_marker_v_2 import SingleLocationMarkerV2
+
+single_location_marker_v_2 = SingleLocationMarkerV2(
+    status=SingleLocationMarkerStatusEnum.AVAILABLE,
+    coordinates=Coordinates(
+        latitude=39.14,
+        longitude=36.94
+    ),
+    evse_count=12,
+    max_power=10.12,
+    location_count=6,
+    location_uid='2057411',
+    operator_name='TheNewMotion'
+)
 ```
 

@@ -18,7 +18,9 @@ Source of the last update
 
 ## Example
 
-```
-TariffService
+```python
+from shellev.models.connector_vo_updated_by_enum import ConnectorVOUpdatedByEnum
+
+connector_vo_updated_by = ConnectorVOUpdatedByEnum.TARIFFSERVICE
 ```
 

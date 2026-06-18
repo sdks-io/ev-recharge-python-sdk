@@ -18,7 +18,9 @@ Accessibility Status
 
 ## Example
 
-```
-FreePublic
+```python
+from shellev.models.accessibility_status_enum import AccessibilityStatusEnum
+
+accessibility_status = AccessibilityStatusEnum.RESTRICTED
 ```
 

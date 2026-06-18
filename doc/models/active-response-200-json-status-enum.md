@@ -16,7 +16,9 @@ Indicates overall status of the request
 
 ## Example
 
-```
-SUCCESS
+```python
+from shellev.models.active_response_200_json_status_enum import ActiveResponse200JsonStatusEnum
+
+active_response_200_json_status = ActiveResponse200JsonStatusEnum.SUCCESS
 ```
 

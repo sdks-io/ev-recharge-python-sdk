@@ -17,7 +17,9 @@ Methods that can be used to Authorize sessions on this EVSE
 
 ## Example
 
-```
-NewMotionApp
+```python
+from shellev.models.evse_vo_authorization_methods_enum import EvseVOAuthorizationMethodsEnum
+
+evse_vo_authorization_methods = EvseVOAuthorizationMethodsEnum.RFIDTOKEN
 ```
 

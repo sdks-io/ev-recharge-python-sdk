@@ -18,16 +18,18 @@ OAuth 2 Authorization endpoint response
 | `expiry` | `int` | Optional | Time of token expiry as unix timestamp (UTC) |
 | `refresh_token` | `str` | Optional | Refresh token<br>Used to get a new access token when it expires. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "access_token": "access_token4",
-  "token_type": "token_type6",
-  "expires_in": 74,
-  "scope": "scope6",
-  "expiry": 88,
-  "refresh_token": "refresh_token6"
-}
+```python
+from shellev.models.o_auth_token import OAuthToken
+
+o_auth_token = OAuthToken(
+    access_token='access_token4',
+    token_type='token_type4',
+    expires_in=80,
+    scope='scope4',
+    expiry=242,
+    refresh_token='refresh_token6'
+)
 ```
 

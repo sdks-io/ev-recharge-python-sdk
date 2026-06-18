@@ -57,7 +57,7 @@ class ShellevClient(object):
                  override_http_client_configuration=False, http_call_back=None,
                  timeout=60, max_retries=0, backoff_factor=2,
                  retry_statuses=None, retry_methods=None, proxy_settings=None,
-                 environment=Environment.PRODUCTION, o_auth_client_id=None,
+                 environment=Environment.SIT, o_auth_client_id=None,
                  o_auth_client_secret=None, o_auth_token=None,
                  client_credentials_auth_credentials=None, config=None):
         """Initialize a new instance of ShellevClient."""

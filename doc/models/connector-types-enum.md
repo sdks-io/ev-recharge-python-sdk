@@ -28,3 +28,11 @@
 | `TESLA` |
 | `UNSPECIFIED` |
 
+## Example
+
+```python
+from shellev.models.connector_types_enum import ConnectorTypesEnum
+
+connector_types = ConnectorTypesEnum.TYPE3
+```
+

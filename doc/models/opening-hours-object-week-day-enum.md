@@ -21,7 +21,9 @@
 
 ## Example
 
-```
-Mon
+```python
+from shellev.models.opening_hours_object_week_day_enum import OpeningHoursObjectWeekDayEnum
+
+opening_hours_object_week_day = OpeningHoursObjectWeekDayEnum.SUN
 ```
 

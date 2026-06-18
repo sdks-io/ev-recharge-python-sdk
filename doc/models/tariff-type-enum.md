@@ -16,3 +16,11 @@ Tariff type classification
 | `REIMBURSEMENT` |
 | `VMSP` |
 
+## Example
+
+```python
+from shellev.models.tariff_type_enum import TariffTypeEnum
+
+tariff_type = TariffTypeEnum.DRIVER
+```
+

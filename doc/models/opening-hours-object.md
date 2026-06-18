@@ -13,13 +13,16 @@
 | `start_time` | `str` | Optional | Hour in 24h local time when the location opens. |
 | `end_time` | `str` | Optional | Hour in 24h local time when the location closes. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "weekDay": "Mon",
-  "startTime": "08:00",
-  "endTime": "23:00"
-}
+```python
+from shellev.models.opening_hours_object import OpeningHoursObject
+from shellev.models.opening_hours_object_week_day_enum import OpeningHoursObjectWeekDayEnum
+
+opening_hours_object = OpeningHoursObject(
+    week_day=OpeningHoursObjectWeekDayEnum.MON,
+    start_time='08:00',
+    end_time='23:00'
+)
 ```
 

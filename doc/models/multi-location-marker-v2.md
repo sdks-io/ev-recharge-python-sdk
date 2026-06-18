@@ -18,19 +18,21 @@ A Marker is a place on the map that represent multiple Locations at the same spo
 | `operator_name` | `str` | Optional | Operator of this Shell Recharge Location |
 | `marker_type` | `str` | Required, Constant | Type of the Marker, in this case it will always be MultiLocation<br><br>**Value**: `"MultiLocation"` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "locationCount": 6.0,
-  "evseCount": 10.0,
-  "maxPower": 42.0,
-  "operatorName": "TheNewMotion",
-  "markerType": "MultiLocation",
-  "coordinates": {
-    "latitude": 39.14,
-    "longitude": 36.94
-  }
-}
+```python
+from shellev.models.coordinates import Coordinates
+from shellev.models.multi_location_marker_v_2 import MultiLocationMarkerV2
+
+multi_location_marker_v_2 = MultiLocationMarkerV2(
+    coordinates=Coordinates(
+        latitude=39.14,
+        longitude=36.94
+    ),
+    location_count=6,
+    evse_count=10,
+    max_power=42,
+    operator_name='TheNewMotion'
+)
 ```
 

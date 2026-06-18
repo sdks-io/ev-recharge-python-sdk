@@ -13,36 +13,49 @@
 | `status` | `str` | Optional | status of the API call |
 | `data` | List[[SingleLocationMarkerV2](../../doc/models/single-location-marker-v2.md) \| [MultiLocationMarkerV2](../../doc/models/multi-location-marker-v2.md)] \| None | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "requestId": "9d2dee33-7803-485a-a2b1-2c7538e597ee",
-  "status": "SUCCESS",
-  "data": [
-    {
-      "markerType": "SingleLocation",
-      "status": "Unavailable",
-      "coordinates": {
-        "latitude": 39.14,
-        "longitude": 36.94
-      },
-      "evseCount": 223.04,
-      "maxPower": 45.08,
-      "locationCount": 62.98
-    },
-    {
-      "markerType": "SingleLocation",
-      "status": "Unavailable",
-      "coordinates": {
-        "latitude": 39.14,
-        "longitude": 36.94
-      },
-      "evseCount": 223.04,
-      "maxPower": 45.08,
-      "locationCount": 62.98
-    }
-  ]
-}
+```python
+from shellev.models.coordinates import Coordinates
+from shellev.models.single_location_marker_response_v_2 import SingleLocationMarkerResponseV2
+from shellev.models.single_location_marker_status_enum import SingleLocationMarkerStatusEnum
+from shellev.models.single_location_marker_v_2 import SingleLocationMarkerV2
+
+single_location_marker_response_v_2 = SingleLocationMarkerResponseV2(
+    request_id='9d2dee33-7803-485a-a2b1-2c7538e597ee',
+    status='SUCCESS',
+    data=[
+        SingleLocationMarkerV2(
+            status=SingleLocationMarkerStatusEnum.UNAVAILABLE,
+            coordinates=Coordinates(
+                latitude=39.14,
+                longitude=36.94
+            ),
+            evse_count=223.04,
+            max_power=45.08,
+            location_count=62.98
+        ),
+        SingleLocationMarkerV2(
+            status=SingleLocationMarkerStatusEnum.UNAVAILABLE,
+            coordinates=Coordinates(
+                latitude=39.14,
+                longitude=36.94
+            ),
+            evse_count=223.04,
+            max_power=45.08,
+            location_count=62.98
+        ),
+        SingleLocationMarkerV2(
+            status=SingleLocationMarkerStatusEnum.UNAVAILABLE,
+            coordinates=Coordinates(
+                latitude=39.14,
+                longitude=36.94
+            ),
+            evse_count=223.04,
+            max_power=45.08,
+            location_count=62.98
+        )
+    ]
+)
 ```
 

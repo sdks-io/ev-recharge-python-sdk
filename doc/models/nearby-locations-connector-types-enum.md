@@ -30,3 +30,11 @@ Filter by Locations that have Connectors with these Connector Types
 | `TESLA` |
 | `UNSPECIFIED` |
 
+## Example
+
+```python
+from shellev.models.nearby_locations_connector_types_enum import NearbyLocationsConnectorTypesEnum
+
+nearby_locations_connector_types = NearbyLocationsConnectorTypesEnum.NEMA520
+```
+

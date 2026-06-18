@@ -13,44 +13,34 @@
 | `status` | `str` | Optional | status of the API call |
 | `data` | [`List[LocationResponeObjectV2]`](../../doc/models/location-respone-object-v2.md) | Optional | API Response |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "requestId": "9d2dee33-7803-485a-a2b1-2c7538e597ee",
-  "status": "SUCCESS",
-  "data": [
-    {
-      "uid": "uid0",
-      "externalId": "externalId6",
-      "coordinates": {
-        "latitude": 39.14,
-        "longitude": 36.94
-      },
-      "operatorName": "operatorName0",
-      "address": {
-        "streetAndNumber": "streetAndNumber2",
-        "postalCode": "postalCode8",
-        "city": "city6",
-        "country": "country0"
-      }
-    },
-    {
-      "uid": "uid0",
-      "externalId": "externalId6",
-      "coordinates": {
-        "latitude": 39.14,
-        "longitude": 36.94
-      },
-      "operatorName": "operatorName0",
-      "address": {
-        "streetAndNumber": "streetAndNumber2",
-        "postalCode": "postalCode8",
-        "city": "city6",
-        "country": "country0"
-      }
-    }
-  ]
-}
+```python
+from shellev.models.address import Address
+from shellev.models.coordinates import Coordinates
+from shellev.models.location_respone_object_v_2 import LocationResponeObjectV2
+from shellev.models.response_v_2 import ResponseV2
+
+response_v_2 = ResponseV2(
+    request_id='9d2dee33-7803-485a-a2b1-2c7538e597ee',
+    status='SUCCESS',
+    data=[
+        LocationResponeObjectV2(
+            uid='uid0',
+            external_id='externalId6',
+            coordinates=Coordinates(
+                latitude=39.14,
+                longitude=36.94
+            ),
+            operator_name='operatorName0',
+            address=Address(
+                street_and_number='streetAndNumber2',
+                postal_code='postalCode8',
+                city='city6',
+                country='country0'
+            )
+        )
+    ]
+)
 ```
 

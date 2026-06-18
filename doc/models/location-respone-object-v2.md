@@ -22,27 +22,31 @@
 | `operator_id` | `str` | Optional | Unique Id of the operator |
 | `open_twenty_four_seven` | `bool` | Optional | Whether the location is open 24/7 |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "uid": "NL*MKS*E0000001*0",
-  "externalId": "01001188",
-  "operatorName": "TheNewMotion",
-  "updated": "10/06/2021 10:44:24",
-  "locationType": "Unknown",
-  "operatorId": "AT-HTB",
-  "openTwentyFourSeven": true,
-  "coordinates": {
-    "latitude": 39.14,
-    "longitude": 36.94
-  },
-  "address": {
-    "streetAndNumber": "streetAndNumber2",
-    "postalCode": "postalCode8",
-    "city": "city6",
-    "country": "country0"
-  }
-}
+```python
+from shellev.models.address import Address
+from shellev.models.coordinates import Coordinates
+from shellev.models.location_respone_object_v_2 import LocationResponeObjectV2
+
+location_respone_object_v_2 = LocationResponeObjectV2(
+    uid='NL*MKS*E0000001*0',
+    external_id='01001188',
+    coordinates=Coordinates(
+        latitude=39.14,
+        longitude=36.94
+    ),
+    operator_name='TheNewMotion',
+    address=Address(
+        street_and_number='streetAndNumber2',
+        postal_code='postalCode8',
+        city='city6',
+        country='country0'
+    ),
+    updated='2021-10-06T10:44:24Z',
+    location_type='Unknown',
+    operator_id='AT-HTB',
+    open_twenty_four_seven=True
+)
 ```
 

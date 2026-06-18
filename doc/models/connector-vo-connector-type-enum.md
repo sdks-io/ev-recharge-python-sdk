@@ -32,7 +32,9 @@ Type of the connector in the EVSE unit.
 
 ## Example
 
-```
-Type2
+```python
+from shellev.models.connector_vo_connector_type_enum import ConnectorVOConnectorTypeEnum
+
+connector_vo_connector_type = ConnectorVOConnectorTypeEnum.TYPE2
 ```
 

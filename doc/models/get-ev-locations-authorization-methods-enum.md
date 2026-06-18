@@ -15,3 +15,11 @@ Filter by Locations that support the given Authorization Methods
 | `RFIDTOKEN` |
 | `PNC` |
 
+## Example
+
+```python
+from shellev.models.get_ev_locations_authorization_methods_enum import GetEVLocationsAuthorizationMethodsEnum
+
+get_ev_locations_authorization_methods = GetEVLocationsAuthorizationMethodsEnum.PNC
+```
+

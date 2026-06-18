@@ -16,14 +16,17 @@ Electrical Properties of the Connector
 | `amperage` | `float` | Optional | Electric Current in Amperes for this connector |
 | `max_electric_power` | `float` | Optional | Power in Kilowatts for this connector |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "powerType": "AC1Phase",
-  "voltage": 230.0,
-  "amperage": 16.0,
-  "maxElectricPower": 3.7
-}
+```python
+from shellev.models.electrical_properties_power_type_enum import ElectricalPropertiesPowerTypeEnum
+from shellev.models.electrical_properties_v_2 import ElectricalPropertiesV2
+
+electrical_properties_v_2 = ElectricalPropertiesV2(
+    power_type=ElectricalPropertiesPowerTypeEnum.AC1PHASE,
+    voltage=230,
+    amperage=16,
+    max_electric_power=3.7
+)
 ```
 

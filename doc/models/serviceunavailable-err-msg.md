@@ -14,16 +14,18 @@
 | `description` | `str` | Optional | Technical details of the error message, the example which is given in the sample payload is one of the scenarios. actual response will vary based on the technical nature |
 | `details` | `List[str]` | Optional | - |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "code": "E0014",
-  "message": "Connectivity Error",
-  "description": "Service Unavailable",
-  "details": [
-    "details1"
-  ]
-}
+```python
+from shellev.models.serviceunavailable_err_msg import ServiceunavailableErrMsg
+
+serviceunavailable_err_msg = ServiceunavailableErrMsg(
+    code='E0014',
+    message='Connectivity Error',
+    description='Service Unavailable',
+    details=[
+        'details7'
+    ]
+)
 ```
 

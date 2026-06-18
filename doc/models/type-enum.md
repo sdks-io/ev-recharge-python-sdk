@@ -18,7 +18,9 @@ Type of the price component
 
 ## Example
 
-```
-FLAT
+```python
+from shellev.models.type_enum import TypeEnum
+
+mtype = TypeEnum.FLAT
 ```
 
